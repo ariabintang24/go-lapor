@@ -23,7 +23,7 @@ class StoreReportRequest extends FormRequest
     {
         return [
             'resident_id' => 'required|exists:residents,id',
-            'category_id' => 'required|
+            'report_category_id' => 'required|
             exists:report_categories,id',
             'title' => 'required|string|max:255',
             'description' => 'required|string',

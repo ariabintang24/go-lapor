@@ -78,8 +78,8 @@
                 {{-- Deskripsi --}}
                 <div class="form-group">
                     <label for="description">Deskripsi Laporan</label>
-                    <textarea type="text" class="form-control @error('description') is-invalid @enderror" id="description"
-                        name="description" value="{{ old('description') }}" rows="5"></textarea>
+                    <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description"
+                        rows="5">{{ old('description') }}</textarea>
                     @error('description')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -126,8 +126,7 @@
                 {{-- Alamat --}}
                 <div class="form-group">
                     <label for="address">Alamat Laporan</label>
-                    <textarea type="text" class="form-control @error('address') is-invalid @enderror" id="address" name="address"
-                        value="{{ old('address') }}" rows="5"></textarea>
+                    <textarea class="form-control @error('address') is-invalid @enderror" id="address" name="address" rows="5">{{ old('address') }}</textarea>
                     @error('address')
                         <div class="invalid-feedback">
                             {{ $message }}
