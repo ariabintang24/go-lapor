@@ -30,9 +30,9 @@
                     <label for="resident">Pelapor</label>
                     <select name="resident_id" class="form-control @error('resident_id') is-invalid @enderror">
                         @foreach ($residents as $resident)
-                            <option value="{{ $resident->id }}">{{ $resident->user->email }} -
+                            <option value="{{ $resident->id }}" @if (old('resident_id') == $resident->id) selected @endif>
+                                {{ $resident->user->email }} -
                                 {{ $resident->user->name }}
-
                             </option>
                         @endforeach
                     </select>
@@ -50,7 +50,7 @@
                     <select name="report_category_id"
                         class="form-control @error('report_category_id') is-invalid @enderror">
                         @foreach ($categories as $category)
-                            <option value="{{ $category->id }}">
+                            <option value="{{ $category->id }}" @if (old('report_category_id') == $category->id) selected @endif)>
                                 {{ $category->name }}
                             </option>
                         @endforeach

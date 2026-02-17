@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreReportRequest;
 use App\Interfaces\ReportCategoryRepositoryInterface;
 use App\Interfaces\ReportRepositoryInterface;
 use App\Interfaces\ResidentRepositoryInterface;
@@ -48,7 +49,7 @@ class ReportController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreReportRequest $request)
     {
         //
     }
