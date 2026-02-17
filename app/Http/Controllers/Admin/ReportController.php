@@ -77,7 +77,11 @@ class ReportController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $report = $this->reportRepository->getReportById($id);
+        $residents = $this->residentRepository->getAllResidents();
+        $categories = $this->reportCategoryRepository->getAllReportCategories();
+
+        return view('pages.admin.report.edit', compact('report', 'residents', 'categories'));
     }
 
     /**
