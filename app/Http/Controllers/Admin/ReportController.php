@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreReportRequest;
+use App\Http\Requests\UpdateReportRequest;
 use App\Interfaces\ReportCategoryRepositoryInterface;
 use App\Interfaces\ReportRepositoryInterface;
 use App\Interfaces\ResidentRepositoryInterface;
@@ -57,7 +58,7 @@ class ReportController extends Controller
         $data['code'] = 'GO' . mt_rand(100000, 999999);
         $data['image'] = $request->file('image')->store('assets/report/image', 'public');
 
-        $this ->reportRepository->createReport($data);
+        $this->reportRepository->createReport($data);
 
         Swal::toast('Data Laporan Berhasil Ditambahkan', 'success')->timerProgressBar(3000);
 
@@ -75,7 +76,7 @@ class ReportController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(int $id)
     {
         $report = $this->reportRepository->getReportById($id);
         $residents = $this->residentRepository->getAllResidents();
@@ -87,10 +88,23 @@ class ReportController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateReportRequest $request, $id)
     {
-        //
+        $data = $request->validated();
+
+        // jika ada image baru
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('assets/report/image', 'public');
+        }
+
+        // update tetap dijalankan
+        $this->reportRepository->updateReport($data, (int) $id);
+
+        Swal::toast('Data Laporan Berhasil Diubah', 'success')->timerProgressBar(3000);
+
+        return redirect()->route('admin.report.index');
     }
+
 
     /**
      * Remove the specified resource from storage.
