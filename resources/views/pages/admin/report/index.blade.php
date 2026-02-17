@@ -65,13 +65,15 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
-            const deleteForms = document.querySelectorAll('.delete-form');
+            const deleteButtons = document.querySelectorAll('.btn-delete');
 
-            deleteForms.forEach(form => {
+            deleteButtons.forEach(button => {
 
-                form.addEventListener('submit', function(e) {
+                button.addEventListener('click', function(e) {
 
-                    e.preventDefault(); // ❗ hentikan submit langsung
+                    e.preventDefault();
+
+                    const form = this.closest('form');
 
                     Swal.fire({
                         title: 'Apakah Anda yakin?',
@@ -83,7 +85,7 @@
                     }).then((result) => {
 
                         if (result.isConfirmed) {
-                            form.submit(); // submit manual
+                            form.submit();
                         }
 
                     });

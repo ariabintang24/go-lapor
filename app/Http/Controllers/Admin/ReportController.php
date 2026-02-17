@@ -113,6 +113,10 @@ class ReportController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $this->reportRepository->deleteReport($id);
+
+        Swal::toast('Data Laporan Berhasil Dihapus', 'success')->timerProgressBar(3000);
+
+        return redirect()->route('admin.report.index');
     }
 }

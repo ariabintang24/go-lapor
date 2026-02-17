@@ -43,7 +43,10 @@
                                         class="d-inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Delete</button>
+
+                                        <button type="submit" class="btn btn-danger btn-delete">
+                                            Delete
+                                        </button>
                                     </form>
                                 </td>
                             </tr>
@@ -57,3 +60,40 @@
 
 
 @endsection
+
+@push('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const deleteButtons = document.querySelectorAll('.btn-delete');
+
+            deleteButtons.forEach(button => {
+
+                button.addEventListener('click', function(e) {
+
+                    e.preventDefault();
+
+                    const form = this.closest('form');
+
+                    Swal.fire({
+                        title: 'Apakah Anda yakin?',
+                        text: "Data tidak bisa dikembalikan!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Ya, hapus',
+                        cancelButtonText: 'Batal'
+                    }).then((result) => {
+
+                        if (result.isConfirmed) {
+                            form.submit();
+                        }
+
+                    });
+
+                });
+
+            });
+
+        });
+    </script>
+@endpush
