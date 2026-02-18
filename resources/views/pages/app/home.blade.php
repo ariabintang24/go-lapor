@@ -12,7 +12,7 @@
         @foreach ($categories as $category)
             <a href=" " class="category d-inline-block">
                 <div class="icon">
-                    {{-- ambil dari database --}}
+                    {{-- ambil dari controller --}}
                     <img src="{{ asset('storage/' . $category->image) }}" alt="">
                 </div>
 
@@ -32,97 +32,46 @@
         </div>
 
         <div class="d-flex flex-column gap-3 mt-3">
-            <div class="card card-report border-0 shadow-none">
-                <a href="details.html" class="text-decoration-none text-dark">
-                    <div class="card-body p-0">
-                        <div class="card-report-image position-relative mb-2">
-                            <img src="assets/images/report-1.png" alt="">
 
-                            <div class="badge-status on-process">
-                                Diproses
+            @foreach ($reports as $report)
+                <div class="card card-report border-0 shadow-none">
+                    <a href="#" class="text-decoration-none text-dark">
+                        <div class="card-body p-0">
+
+                            {{-- ✅ Gambar Report --}}
+                            <div class="card-report-image position-relative mb-2">
+                                <img src="{{ asset('storage/' . $report->image) }}" alt="">
+
+                                {{-- 🔥 Badge Status Clean --}}
+                                @if ($report->latest_status)
+                                    <div class="badge-status {{ $report->latest_status['class'] }}">
+                                        {{ $report->latest_status['label'] }}
+                                    </div>
+                                @endif
                             </div>
-                        </div>
 
-                        <div class="d-flex justify-content-between align-items-end mb-2">
-                            <div class="d-flex align-items-center ">
-                                <img src="assets/images/icons/MapPin.png" alt="map pin" class="icon me-2">
-                                <p class="text-primary city">
-                                    Pekuncen, Banyumas
+                            <div class="d-flex justify-content-between align-items-end mb-2">
+                                <div class="d-flex align-items-center ">
+                                    <img src="{{ asset('assets/app/images/icons/MapPin.png') }}" alt="map pin"
+                                        class="icon me-2">
+                                    <p class="text-primary city">
+                                        {{ $report->address }}
+                                    </p>
+                                </div>
+
+                                <p class="text-secondary date">
+                                    {{ \Carbon\Carbon::parse($report->created_at)->format('d M Y H:i') }}
                                 </p>
                             </div>
 
-                            <p class="text-secondary date">
-                                23 August 2024
-                            </p>
+                            <h1 class="card-title">
+                                {{ $report->title }}
+                            </h1>
                         </div>
+                    </a>
+                </div>
+            @endforeach
 
-                        <h1 class="card-title">
-                            Jembatan roboh di Pekuncen, Banyumas
-                        </h1>
-                    </div>
-                </a>
-            </div>
-
-            <div class="card card-report border-0 shadow-none">
-                <a href="details.html" class="text-decoration-none text-dark">
-                    <div class="card-body p-0">
-                        <div class="card-report-image position-relative mb-2">
-                            <img src="assets/images/report-2.jpg" alt="">
-
-                            <div class="badge-status done">
-                                Selesai
-                            </div>
-                        </div>
-
-                        <div class="d-flex justify-content-between align-items-end mb-2">
-                            <div class="d-flex align-items-center ">
-                                <img src="assets/images/icons/MapPin.png" alt="map pin" class="icon me-2">
-                                <p class="text-primary city">
-                                    Purwokerto, Banyumas
-                                </p>
-                            </div>
-
-                            <p class="text-secondary date">
-                                23 August 2024
-                            </p>
-                        </div>
-
-                        <h1 class="card-title">
-                            Jalan Rusak Parah
-                        </h1>
-                    </div>
-                </a>
-            </div>
-            <div class="card card-report border-0 shadow-none">
-                <a href="details.html" class="text-decoration-none text-dark">
-                    <div class="card-body p-0">
-                        <div class="card-report-image position-relative mb-2">
-                            <img src="assets/images/report-1.png" alt="">
-
-                            <div class="badge-status on-process">
-                                Diproses
-                            </div>
-                        </div>
-
-                        <div class="d-flex justify-content-between align-items-end mb-2">
-                            <div class="d-flex align-items-center ">
-                                <img src="assets/images/icons/MapPin.png" alt="map pin" class="icon me-2">
-                                <p class="text-primary city">
-                                    Pekuncen, Banyumas
-                                </p>
-                            </div>
-
-                            <p class="text-secondary date">
-                                23 August 2024
-                            </p>
-                        </div>
-
-                        <h1 class="card-title">
-                            Jembatan roboh di Pekuncen, Banyumas
-                        </h1>
-                    </div>
-                </a>
-            </div>
         </div>
     </div>
 @endsection

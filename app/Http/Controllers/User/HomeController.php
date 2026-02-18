@@ -4,21 +4,26 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Interfaces\ReportCategoryRepositoryInterface;
+use App\Interfaces\ReportRepositoryInterface;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    private $reportRepository;
     private $reportCategoryRepository;
 
-    public function __construct(ReportCategoryRepositoryInterface $reportCategoryRepository)
+
+    public function __construct(ReportRepositoryInterface $reportRepository, ReportCategoryRepositoryInterface $reportCategoryRepository)
     {
+        $this->reportRepository = $reportRepository;
         $this->reportCategoryRepository = $reportCategoryRepository;
     }
-    
+
     public function index()
     {
         $categories = $this->reportCategoryRepository->getAllReportCategories();
-        return view('pages.app.home', compact('categories'));
+        $reports = $this->reportRepository->getLatestReports();
+
+        return view('pages.app.home', compact('categories', 'reports'));
     }
 }
- 

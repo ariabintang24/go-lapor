@@ -39,4 +39,18 @@ class Report extends Model
         //Satu laporan memiliki banyak status
         return $this->hasMany(ReportStatus::class);
     }
+
+    public function getLatestStatusAttribute()
+    {
+        $status = optional($this->reportStatuses->last())->status;
+
+        $statusMap = [
+            'delivered' => ['label' => 'Terkirim', 'class' => 'on-process'],
+            'in_process' => ['label' => 'Diproses', 'class' => 'on-process'],
+            'completed' => ['label' => 'Selesai', 'class' => 'done'],
+            'rejected' => ['label' => 'Ditolak', 'class' => 'rejected'],
+        ];
+
+        return $statusMap[$status] ?? null;
+    }
 }
