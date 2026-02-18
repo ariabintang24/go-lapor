@@ -33,4 +33,10 @@ class Report extends Model
         //Satu laporan dimiliki oleh satu kategori
         return $this->belongsTo(ReportCategory::class);
     }
+
+    public function reportStatuses()
+    {
+        //Satu laporan memiliki banyak status
+        return $this->hasMany(ReportStatus::class);
+    }
 }
