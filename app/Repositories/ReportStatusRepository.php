@@ -12,9 +12,14 @@ class ReportStatusRepository implements ReportStatusRepositoryInterface
         return ReportStatus::all();
     }
 
+    // public function getReportStatusById(int $id)
+    // {
+    //     return ReportStatus::where('id', $id)->first();
+    // }
+
     public function getReportStatusById(int $id)
     {
-        return ReportStatus::where('id', $id)->first();
+        return ReportStatus::findOrFail($id);
     }
 
     public function createReportStatus(array $data)
@@ -25,15 +30,15 @@ class ReportStatusRepository implements ReportStatusRepositoryInterface
 
     public function updateReportStatus(array $data, int $id)
     {
-        $ReportStatus = $this->getReportStatusById($id);
+        $reportStatus = $this->getReportStatusById($id);
 
-        return $ReportStatus->update($data);
+        return $reportStatus->update($data);
     }
 
     public function deleteReportStatus(int $id)
     {
-        $ReportStatusCategory = $this->getReportStatusById($id);
+        $reportStatus = $this->getReportStatusById($id);
 
-        return $ReportStatusCategory->delete();
+        return $reportStatus->delete();
     }
 }

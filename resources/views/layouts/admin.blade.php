@@ -117,6 +117,15 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
+    <script>
+        window.addEventListener("pageshow", function(event) {
+            if (event.persisted || window.performance.getEntriesByType("navigation")[0].type === "back_forward") {
+                window.location.href = window.location.href;
+            }
+        });
+    </script>
+
+
     @stack('scripts')
 
 </body>

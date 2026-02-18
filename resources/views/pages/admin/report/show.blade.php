@@ -102,7 +102,7 @@
                                     {{-- <a href="{{ route('admin.report-status.show', $report->id) }}"
                                         class="btn btn-info">Show</a> --}}
 
-                                    <form action="{{ route('admin.report-status.destroy', $report->id) }}" method="POST"
+                                    <form action="{{ route('admin.report-status.destroy', $status->id) }}" method="POST"
                                         class="d-inline delete-form">
                                         @csrf
                                         @method('DELETE')
@@ -141,5 +141,42 @@
         }).addTo(mymap);
 
         marker.bindPopup("<b>Lokasi Laporan</b><br />berada di {{ $report->address }}").openPopup();
+    </script>
+@endpush
+
+@push('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const deleteButtons = document.querySelectorAll('.btn-delete');
+
+            deleteButtons.forEach(button => {
+
+                button.addEventListener('click', function(e) {
+
+                    e.preventDefault();
+
+                    const form = this.closest('form');
+
+                    Swal.fire({
+                        title: 'Apakah Anda yakin?',
+                        text: "Data tidak bisa dikembalikan!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Ya, hapus',
+                        cancelButtonText: 'Batal'
+                    }).then((result) => {
+
+                        if (result.isConfirmed) {
+                            form.submit();
+                        }
+
+                    });
+
+                });
+
+            });
+
+        });
     </script>
 @endpush
