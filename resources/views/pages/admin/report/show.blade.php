@@ -66,7 +66,8 @@
             <h6 class="m-0 font-weight-bold text-primary">Progress Laporan</h6>
         </div>
         <div class="card-body">
-            <a href="{{ route('admin.report-status.create') }}" class="btn btn-primary mb-3">Tambah Progress</a>
+            <a href="{{ route('admin.report-status.create', $report->id) }}" class="btn btn-primary mb-3">Tambah
+                Progress</a>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
@@ -80,13 +81,20 @@
                     </thead>
                     <tbody>
                         {{-- $reports dari public function index di reportController.php --}}
-                        @foreach ($reports->reportStatuses as $status)
+                        @foreach ($report->reportStatuses as $status)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
+                                {{-- jika ada tampilkan image, kalau tidak - --}}
                                 <td>
-                                    <img src="{{ asset('storage/' . $report->image) }}" width="100"
-                                        alt="{{ $report->name }}">
+                                    @if ($status->image)
+                                        <img src="{{ asset('storage/' . $report->image) }}" width="100"
+                                            alt="{{ $report->name }}">
+                                    @else
+                                        -
+                                    @endif
                                 </td>
+                                <td>{{ $status->status }}</td>
+                                <td>{{ $status->description }}</td>
                                 <td>
                                     <a href="{{ route('admin.report-status.edit', $report->id) }}"
                                         class="btn btn-warning">Edit</a>

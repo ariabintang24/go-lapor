@@ -51,7 +51,7 @@
                     <select name="report_category_id"
                         class="form-control @error('report_category_id') is-invalid @enderror">
                         @foreach ($categories as $category)
-                            <option value="{{ $category->id }}" @if (old('report_category_id', $report->report_category_id) == $category->id) selected @endif)>
+                            <option value="{{ $category->id }}" @if (old('report_category_id', $report->report_category_id) == $category->id) selected @endif>
                                 {{ $category->name }}
                             </option>
                         @endforeach

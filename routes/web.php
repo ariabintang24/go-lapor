@@ -26,5 +26,32 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->grou
     Route::resource('/resident', ResidentController::class);
     Route::resource('/report-category', ReportCategoryController::class);
     Route::resource('/report', ReportController::class);
-    Route::resource('/report-status', ReportStatusController::class);
+
+    // ⬇ TARUH REPORT STATUS DI SINI SAJA
+        Route::get(
+            '/report-status/{reportId}/create',
+            [ReportStatusController::class, 'create']
+        )->name('report-status.create');
+
+        Route::resource(
+            '/report-status',
+            ReportStatusController::class
+        )->except('create');
+
+
+    // Report Status
+    // Route::prefix('admin')
+    //     ->name('admin.')
+    //     ->group(function () {
+
+    //         Route::get(
+    //             '/report-status/{reportId}/create',
+    //             [ReportStatusController::class, 'create']
+    //         )->name('report-status.create');
+
+    //         Route::resource(
+    //             '/report-status',
+    //             ReportStatusController::class
+    //         )->except('create');
+    //     });
 });
