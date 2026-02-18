@@ -9,7 +9,7 @@ class ReportStatus extends Model
 {
 
     use SoftDeletes;
-    
+
     protected $fillable = [
         'report_id',
         'image',
@@ -19,7 +19,7 @@ class ReportStatus extends Model
 
     public function report()
     {
-        return $this->belongsTo(Resident::class);
+        return $this->belongsTo(Report::class);
     }
 
     public function category()

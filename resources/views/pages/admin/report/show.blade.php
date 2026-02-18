@@ -99,8 +99,8 @@
                                     <a href="{{ route('admin.report-status.edit', $report->id) }}"
                                         class="btn btn-warning">Edit</a>
 
-                                    <a href="{{ route('admin.report-status.show', $report->id) }}"
-                                        class="btn btn-info">Show</a>
+                                    {{-- <a href="{{ route('admin.report-status.show', $report->id) }}"
+                                        class="btn btn-info">Show</a> --}}
 
                                     <form action="{{ route('admin.report-status.destroy', $report->id) }}" method="POST"
                                         class="d-inline delete-form">
