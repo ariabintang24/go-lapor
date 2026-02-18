@@ -6,13 +6,12 @@ use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\ReportStatusController;
 use App\Http\Controllers\Admin\ResidentController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\User\HomeController;
 use App\Models\ReportCategory;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 
@@ -28,15 +27,15 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->grou
     Route::resource('/report', ReportController::class);
 
     // ⬇ TARUH REPORT STATUS DI SINI SAJA
-        Route::get(
-            '/report-status/{reportId}/create',
-            [ReportStatusController::class, 'create']
-        )->name('report-status.create');
+    Route::get(
+        '/report-status/{reportId}/create',
+        [ReportStatusController::class, 'create']
+    )->name('report-status.create');
 
-        Route::resource(
-            '/report-status',
-            ReportStatusController::class
-        )->except('create');
+    Route::resource(
+        '/report-status',
+        ReportStatusController::class
+    )->except('create');
 
 
     // Report Status
