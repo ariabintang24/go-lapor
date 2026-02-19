@@ -14,15 +14,19 @@
 
         </div>
 
+        @if (request()->category)
+            <p>Kategori {{ request()->category }}</p>
+        @endif
+
         <div class="d-flex flex-column gap-3 mt-3">
-            @foreach ($reports as $report)
+
+            @forelse ($reports as $report)
                 <div class="card card-report border-0 shadow-none">
                     <a href="{{ route('report.show', $report->code) }}" class="text-decoration-none text-dark">
                         <div class="card-body p-0">
                             <div class="card-report-image position-relative mb-2">
                                 <img src="{{ asset('storage/' . $report->image) }}" alt="">
 
-                                {{-- 🔥 Badge Status Clean --}}
                                 @if ($report->latest_status)
                                     <div class="badge-status {{ $report->latest_status['class'] }}">
                                         {{ $report->latest_status['label'] }}
@@ -34,6 +38,7 @@
                                 <div class="d-flex align-items-center ">
                                     <img src="{{ asset('assets/app/images/icons/MapPin.png') }}" alt="map pin"
                                         class="icon me-2">
+
                                     <p class="text-primary city">
                                         {{ $report->address }}
                                     </p>
@@ -50,8 +55,25 @@
                         </div>
                     </a>
                 </div>
-            @endforeach
 
+            @empty
+
+                {{-- 🔥 Tampilan No Result --}}
+                <div class="text-center py-5">
+                    <img src="{{ asset('assets/app/images/no-data.png') }}" alt="No Data"
+                        style="width:150px; opacity:0.7;">
+
+                    {{-- <h5 class="mt-3 text-muted">Tidak ada pengaduan ditemukan</h5> --}}
+
+                    @if (request()->category)
+                        <p class="text-secondary">
+                            Oops! <br>Tidak ada pengaduan untuk kategori
+                            <strong>{{ request()->category }}</strong>
+                        </p>
+                    @endif
+                </div>
+            @endforelse
         </div>
+
     </div>
 @endsection
