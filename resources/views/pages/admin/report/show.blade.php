@@ -96,7 +96,7 @@
                                 <td>{{ $status->status }}</td>
                                 <td>{{ $status->description }}</td>
                                 <td>
-                                    <a href="{{ route('admin.report-status.edit', $report->id) }}"
+                                    <a href="{{ route('admin.report-status.edit', $status->id) }}"
                                         class="btn btn-warning">Edit</a>
 
                                     {{-- <a href="{{ route('admin.report-status.show', $report->id) }}"

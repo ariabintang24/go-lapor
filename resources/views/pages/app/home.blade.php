@@ -35,7 +35,7 @@
 
             @foreach ($reports as $report)
                 <div class="card card-report border-0 shadow-none">
-                    <a href="#" class="text-decoration-none text-dark">
+                    <a href="{{ route('report.show', $report->code) }}" class="text-decoration-none text-dark">
                         <div class="card-body p-0">
 
                             {{-- ✅ Gambar Report --}}

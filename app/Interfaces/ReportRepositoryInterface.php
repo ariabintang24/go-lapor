@@ -8,6 +8,8 @@ interface ReportRepositoryInterface
 
     public function getLatestReports();
 
+    public function getReportByCode(string $code);
+
     public function getReportById(int $id);
 
     public function createReport(array $data);

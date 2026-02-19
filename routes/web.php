@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ReportCategoryController;
+
 use App\Http\Controllers\Admin\ReportController;
+use App\Http\Controllers\User\ReportController as UserReportController;
+
 use App\Http\Controllers\Admin\ReportStatusController;
 use App\Http\Controllers\Admin\ResidentController;
 use App\Http\Controllers\Auth\LoginController;
@@ -12,6 +15,8 @@ use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::get('/report/{code}', [UserReportController::class, 'show'])->name('report.show');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 

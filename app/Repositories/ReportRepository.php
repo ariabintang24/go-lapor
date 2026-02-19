@@ -20,6 +20,11 @@ class ReportRepository implements ReportRepositoryInterface
             ->get();
     }
 
+    public function getReportByCode(string $code)
+    {
+        return Report::where('code', $code)->first();
+    }
+
     public function getReportById(int $id)
     {
         return Report::where('id', $id)->first();
