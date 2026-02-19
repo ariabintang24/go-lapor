@@ -1,4 +1,4 @@
-<div class="floating-button-container d-flex" onclick="window.location.href = 'take.html'">
+<div class="floating-button-container d-flex" onclick="window.location.href='{{ route('report.take') }}'">
     <button class="floating-button">
         <i class="fa-solid fa-camera"></i>
     </button>
