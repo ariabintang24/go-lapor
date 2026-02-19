@@ -38,7 +38,7 @@
                         :
                     </span>
                     <p>
-                        {{ \Carbon\Carbon::parse($report->created_at)->format('d M Y H:i') }}
+                        {{ \Carbon\Carbon::parse($report->created_at)->format('d M Y | H:i') }}
                     </p>
                 </div>
             </div>
@@ -125,7 +125,7 @@
                                 <img src="{{ asset('storage/' . $status->image) }}" alt="image" class="img-fluid">
                             @endif
                             <span
-                                class="timeline-date">{{ \Carbon\Carbon::parse($status->created_at)->format('d M Y H:i') }}</span>
+                                class="timeline-date">{{ \Carbon\Carbon::parse($report->created_at)->format('d M Y | H:i') }}</span>
                             <span class="timeline-event">{{ $status->description }}</span>
                         </div>
                     </li>
