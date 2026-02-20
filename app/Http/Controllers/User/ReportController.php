@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreReportRequest;
 use App\Interfaces\ReportCategoryRepositoryInterface;
 use App\Interfaces\ReportRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpKernel\HttpCache\Store;
 
 class ReportController extends Controller
 {
@@ -50,5 +53,29 @@ class ReportController extends Controller
     {
         $categories = $this->reportCategoryRepository->getAllReportCategories();
         return view('pages.app.report.create', compact('categories'));
+    }
+
+    public function store(StoreReportRequest $request)
+    {
+        $data = $request->validated();
+
+        $data['code'] = 'GO' . mt_rand(100000, 999999);
+
+        // ambil resident id dari relasi
+        $data['resident_id'] = Auth::user()->resident->id;
+
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')
+                ->store('assets/report/image', 'public');
+        }
+
+        $this->reportRepository->createReport($data);
+
+        return redirect()->route('report.success');
+    }
+
+    public function success()
+    {
+        return view('pages.app.report.success');
     }
 }

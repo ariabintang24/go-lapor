@@ -13,20 +13,26 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\ProfileController;
 use App\Models\ReportCategory;
+use App\Models\User;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+
 Route::get('/reports', [UserReportController::class, 'index'])->name('report.index');
 Route::get('/report/{code}', [UserReportController::class, 'show'])->name('report.show');
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'role:resident'])->group(function () {
     Route::get('/take-report', [UserReportController::class, 'take'])->name('report.take');
     Route::get('/preview', [UserReportController::class, 'preview'])->name('report.preview');
-    Route::get('/create-report', [UserReportController::class, 'create'])->name('report.create');
 
-    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    Route::get('/create-report', [UserReportController::class, 'create'])->name('report.create');
+    Route::post('/create-report', [UserReportController::class, 'store'])->name('report.store');
+    Route::get('report-success', [UserReportController::class, 'success'])->name('report.success');
+
+    // sementara profile dikeluarkan dulu
 });
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');

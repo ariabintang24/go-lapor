@@ -18,7 +18,9 @@
                 </tr>
                 <tr>
                     <td>Nama Pelapor</td>
-                    <td>{{ $report->resident->user->email }} - {{ $report->resident->user->name }}</td>
+                    <td>{{ $report->resident?->user?->email ?? '-' }}
+                        -
+                        {{ $report->resident?->user?->name ?? '-' }}</td>
                 </tr>
                 <tr>
                     <td>Kategori Laporan</td>

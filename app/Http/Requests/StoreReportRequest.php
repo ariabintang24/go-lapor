@@ -22,7 +22,8 @@ class StoreReportRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'resident_id' => 'required|exists:residents,id',
+            'resident_id' => 'nullable|exists:residents,id',
+            
             'report_category_id' => 'required|
             exists:report_categories,id',
             'title' => 'required|string|max:255',
