@@ -32,6 +32,21 @@ class ReportController extends Controller
         return view('pages.app.report.index', compact('reports'));
     }
 
+    public function myReport(Request $request)
+    {
+        $status = $request->status ?? 'delivered';
+
+        $reports = $this->reportRepository
+            ->getReportsByResidentId($status);
+
+        $totalReports = \App\Models\Report::where(
+            'resident_id',
+            auth()->user()->resident->id
+        )->count();
+
+        return view('pages.app.report.my-report', compact('reports', 'totalReports'));
+    }
+
     public function show($code)
     {
         $report = $this->reportRepository->getReportByCode($code);

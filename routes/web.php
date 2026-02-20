@@ -32,6 +32,8 @@ Route::middleware(['auth', 'role:resident'])->group(function () {
     Route::post('/create-report', [UserReportController::class, 'store'])->name('report.store');
     Route::get('report-success', [UserReportController::class, 'success'])->name('report.success');
 
+    Route::get('/my-report', [UserReportController::class, 'myReport'])->name('report.myreport');
+
     // sementara profile dikeluarkan dulu
 });
 
