@@ -26,12 +26,12 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-    <script src="{{ asset('assets/app/js/take.js') }}"></script>
+    {{-- <script src="{{ asset('assets/app/js/take.js') }}"></script> --}}
 
     <script src="{{ asset('assets/app/js/report.js') }}"></script>
 
 
-    @yield('scripts')
+    @stack('scripts')
 </body>
 
 </html>

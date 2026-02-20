@@ -16,7 +16,7 @@
     </div>
 @endsection
 
-@section('scripts')
+@push('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
     <script>
         var animation = bodymovin.loadAnimation({
@@ -27,4 +27,4 @@
             path: "{{ asset('assets/app/lottie/success.json') }}"
         })
     </script>
-@endsection
+@endpush

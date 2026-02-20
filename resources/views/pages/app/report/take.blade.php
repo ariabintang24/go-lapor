@@ -25,3 +25,7 @@
         }
     </style>
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('assets/app/js/take.js') }}"></script>
+@endpush
