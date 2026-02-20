@@ -20,6 +20,7 @@
         <div class="card-body">
             <div class="card-title mb-4 fw-bold">Detail Informasi</div>
 
+            {{-- Kode --}}
             <div class="row mb-3">
                 <div class="col-4 text-secondary">Kode</div>
                 <div class="col-8 d-flex">
@@ -31,6 +32,8 @@
                     </p>
                 </div>
             </div>
+
+            {{-- Tanggal --}}
             <div class="row mb-3">
                 <div class="col-4 text-secondary">Tanggal</div>
                 <div class="col-8 d-flex">
@@ -42,6 +45,8 @@
                     </p>
                 </div>
             </div>
+
+            {{-- Kategori --}}
             <div class="row mb-3">
                 <div class="col-4 text-secondary">Kategori</div>
                 <div class="col-8 d-flex">
@@ -53,6 +58,8 @@
                     </p>
                 </div>
             </div>
+
+            {{-- Lokasi --}}
             <div class="row mb-3">
                 <div class="col-4 text-secondary">Lokasi</div>
                 <div class="col-8 d-flex">
@@ -64,6 +71,8 @@
                     </p>
                 </div>
             </div>
+
+            {{-- Status --}}
             <div class="row mb-3">
                 <div class="col-4 text-secondary">Status</div>
                 <div class="col-8 d-flex">
@@ -105,10 +114,20 @@
                             @break
                         @endswitch
                     @endif
-
-
                 </div>
             </div>
+
+            {{-- Deskripsi --}}
+            <div class="row mb-3">
+                <div class="col-4 text-secondary">Deskripsi</div>
+                <div class="col-8 d-flex">
+                    <span class="me-2">:</span>
+                    <p>
+                        {{ $report->description }}
+                    </p>
+                </div>
+            </div>
+
         </div>
     </div>
 
