@@ -36,23 +36,23 @@
 
 
     {{-- ================= KATEGORI (GRID) ================= --}}
-    <div class="mb-5">
+    <div class="mb-5 p-4 p-lg-5">
 
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h6 class="fw-semibold">Kategori Laporan</h6>
         </div>
 
-        <div class="row g-3">
+        <div class="row g-4">
             @foreach ($categories as $category)
-                <div class="col-6">
+                <div class="col-6 col-lg-4">
                     <a href="{{ route('report.index', ['category' => $category->name]) }}"
                         class="text-decoration-none text-dark">
 
-                        <div class="card border-0 shadow-sm h-100 text-center p-3 rounded-4">
+                        <div class="card border-0 shadow-sm h-100 text-center p-3 rounded-4xl">
 
-                            <div class="mb-2">
-                                <img src="{{ asset('storage/' . $category->image) }}" alt="{{ $category->name }}"
-                                    style="width: 40px; height: 40px; object-fit: contain;">
+                            <div class="mb-2 icon-hover">
+                                <img src="{{ asset('storage/' . $category->image) }}" class="kategori-icon"
+                                    alt="{{ $category->name }}" style="width: 40px; height: 40px; object-fit: contain;">
                             </div>
 
                             <p class="mb-0 small fw-medium">
@@ -78,47 +78,48 @@
             </a>
         </div>
 
-        <div class="d-flex flex-column gap-4 mt-3">
+        <div class="row g-4 mt-3">
 
             @foreach ($reports as $report)
-                <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                <div class="col-12 col-md-6 col-xl-4">
 
                     <a href="{{ route('report.show', $report->code) }}" class="text-decoration-none text-dark">
 
-                        {{-- IMAGE --}}
-                        <div class="position-relative">
-                            <img src="{{ asset('storage/' . $report->image) }}" class="w-100"
-                                style="height: 200px; object-fit: cover;" alt="">
+                        <div class="modern-report-card h-100">
 
-                            {{-- STATUS BADGE --}}
-                            @if ($report->latest_status)
-                                <span
-                                    class="position-absolute top-0 end-0 m-3 badge rounded-pill {{ $report->latest_status['class'] }}">
-                                    {{ $report->latest_status['label'] }}
-                                </span>
-                            @endif
-                        </div>
+                            {{-- IMAGE --}}
+                            <div class="modern-report-image-wrapper">
+                                <img src="{{ asset('storage/' . $report->image) }}" class="modern-report-image"
+                                    alt="">
 
-                        <div class="card-body">
-
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <div class="d-flex align-items-center">
-                                    <img src="{{ asset('assets/app/images/icons/MapPin.png') }}" alt="map pin"
-                                        style="width:16px;" class="me-2">
-
-                                    <small class="text-primary">
-                                        {{ \Str::limit($report->address, 25) }}
-                                    </small>
-                                </div>
-
-                                <small class="text-muted">
-                                    {{ \Carbon\Carbon::parse($report->created_at)->format('d M Y | H:i') }}
-                                </small>
+                                @if ($report->latest_status)
+                                    <span class="modern-report-badge {{ $report->latest_status['class'] }}">
+                                        {{ $report->latest_status['label'] }}
+                                    </span>
+                                @endif
                             </div>
 
-                            <h6 class="fw-semibold mb-0">
-                                {{ $report->title }}
-                            </h6>
+                            {{-- CONTENT --}}
+                            <div class="modern-report-body">
+
+                                <div class="modern-report-meta">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <img src="{{ asset('assets/app/images/icons/MapPin.png') }}" style="width:14px;">
+                                        <span class="text-success small">
+                                            {{ \Str::limit($report->address, 25) }}
+                                        </span>
+                                    </div>
+
+                                    <span class="text-muted small">
+                                        {{ \Carbon\Carbon::parse($report->created_at)->format('d M Y') }}
+                                    </span>
+                                </div>
+
+                                <h6 class="modern-report-title">
+                                    {{ $report->title }}
+                                </h6>
+
+                            </div>
 
                         </div>
 

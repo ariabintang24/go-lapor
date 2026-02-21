@@ -87,28 +87,28 @@
                     @if ($lastStatus)
                         @switch($lastStatus)
                             @case('delivered')
-                                <div class="badge-pending">
+                                <div class="badge-status badge-blue">
                                     <img src="{{ asset('assets/app/images/icons/CircleNotch.svg') }}">
                                     <p>Terkirim</p>
                                 </div>
                             @break
 
                             @case('in_process')
-                                <div class="badge-pending">
+                                <div class="badge-status badge-yellow">
                                     <img src="{{ asset('assets/app/images/icons/CircleNotch.svg') }}">
                                     <p>Diproses</p>
                                 </div>
                             @break
 
                             @case('completed')
-                                <div class="badge-success">
+                                <div class="badge-status badge-green">
                                     <img src="{{ asset('assets/app/images/icons/Checks.svg') }}">
                                     <p>Selesai</p>
                                 </div>
                             @break
 
                             @case('rejected')
-                                <div class="badge-pending">
+                                <div class="badge-status badge-red">
                                     <p>Ditolak</p>
                                 </div>
                             @break

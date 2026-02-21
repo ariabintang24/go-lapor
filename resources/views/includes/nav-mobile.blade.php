@@ -1,35 +1,54 @@
-<div class="floating-button-container d-flex" onclick="window.location.href='{{ route('report.take') }}'">
-    <button class="floating-button">
-        <i class="fa-solid fa-camera"></i>
-    </button>
-</div>
-<nav class="nav-mobile d-flex">
-    <a href="{{ route('home') }}" class="{{ request()->is('/') ? 'active' : '' }}">
-        <i class="fas fa-house"></i>
-        Beranda
-    </a>
-    <a href="{{ route('report.myreport', ['status' => 'delivered']) }}" class="">
-        <i class="fas fa-solid fa-clipboard-list"></i>
-        Laporanmu
-    </a>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <a href="" class="">
-        <i class="fas fa-bell"></i>
-        Notifikasi
-    </a>
-    @auth
-        <a href="{{ route('profile') }}" class="">
-            <i class="fas fa-user"></i>
-            Profil
-        </a>
-    @else
-        <a href="{{ route('register') }}" class="">
-            <i class="fas fa-right-to-bracket"></i>
-            Daftar
-        </a>
-    @endauth
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+    <div class="container">
 
+        {{-- Logo --}}
+        <a class="navbar-brand fw-bold" href="{{ route('home') }}">
+            Go-<span class="text-primary">Lapor</span>
+        </a>
+
+        {{-- Hamburger Button (Mobile) --}}
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+            aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        {{-- Menu --}}
+        <div class="collapse navbar-collapse" id="mainNavbar">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->is('/') ? 'active fw-bold' : '' }}" href="{{ route('home') }}">
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('report.myreport', ['status' => 'delivered']) }}">
+                        Laporan
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        Notifikasi
+                    </a>
+                </li>
+
+                @auth
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('profile') }}">
+                            Profil
+                        </a>
+                    </li>
+                @else
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">
+                            Daftar
+                        </a>
+                    </li>
+                @endauth
+
+            </ul>
+        </div>
+    </div>
 </nav>

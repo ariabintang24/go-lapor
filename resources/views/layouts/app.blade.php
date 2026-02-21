@@ -12,10 +12,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
 
-<body>
-    <div class="max-w-screen-sm mx-auto bg-white min-vh-100 p-3">
-        @yield('content')
+<body class="pt-5">
+    <div class="container-fluid">
+
+        <div class="container py-4">
+            @yield('content')
+        </div>
+
     </div>
+
 
     @include('includes.nav-mobile')
 

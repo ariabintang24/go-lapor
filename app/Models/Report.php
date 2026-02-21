@@ -45,10 +45,22 @@ class Report extends Model
         $status = optional($this->reportStatuses->last())->status;
 
         $statusMap = [
-            'delivered' => ['label' => 'Terkirim', 'class' => 'on-process'],
-            'in_process' => ['label' => 'Diproses', 'class' => 'on-process'],
-            'completed' => ['label' => 'Selesai', 'class' => 'done'],
-            'rejected' => ['label' => 'Ditolak', 'class' => 'rejected'],
+            'delivered' => [
+                'label' => 'Terkirim',
+                'class' => 'badge-blue'
+            ],
+            'in_process' => [
+                'label' => 'Diproses',
+                'class' => 'badge-yellow'
+            ],
+            'completed' => [
+                'label' => 'Selesai',
+                'class' => 'badge-green'
+            ],
+            'rejected' => [
+                'label' => 'Ditolak',
+                'class' => 'badge-red'
+            ],
         ];
 
         return $statusMap[$status] ?? null;
