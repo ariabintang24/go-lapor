@@ -27,7 +27,7 @@
                     <div class="row g-3">
                         <div class="col-6">
                             <div class="profile-stat">
-                                <h4 class="mb-1">2</h4>
+                                <h4 class="mb-1">{{ $terkirim }}</h4>
                                 <p class="text-muted small mb-0 text-nowrap">
                                     Laporan Terkirim
                                 </p>
@@ -36,7 +36,7 @@
 
                         <div class="col-6">
                             <div class="profile-stat">
-                                <h4 class="mb-1">2</h4>
+                                <h4 class="mb-1">{{ $diproses }}</h4>
                                 <p class="text-muted small mb-0 text-nowrap">
                                     Laporan Diproses
                                 </p>
@@ -45,7 +45,7 @@
 
                         <div class="col-6">
                             <div class="profile-stat">
-                                <h4 class="mb-1">3</h4>
+                                <h4 class="mb-1">{{ $selesai }}</h4>
                                 <p class="text-muted small mb-0 text-nowrap">
                                     Laporan Selesai
                                 </p>
@@ -54,7 +54,7 @@
 
                         <div class="col-6">
                             <div class="profile-stat">
-                                <h4 class="mb-1">4</h4>
+                                <h4 class="mb-1">{{ $ditolak }}</h4>
                                 <p class="text-muted small mb-0 text-nowrap">
                                     Laporan Ditolak
                                 </p>
