@@ -6,30 +6,39 @@
 
 
     {{-- ================= HERO SECTION ================= --}}
-    <div class="py-5 text-center hero-section">
-
+    <div class="py-5 hero-section">
         <div class="container">
 
-            <h2 class="fw-bold display-6 mb-3">
-                Laporkan dan Pantau <br>
-                Masalah di Sekitarmu
-            </h2>
+            <div class="row align-items-center">
 
-            <p class="text-muted mb-4 px-md-5">
-                Sampaikan laporan dengan mudah, pantau progres secara real-time,
-                dan bantu menciptakan lingkungan yang lebih aman dan nyaman.
-            </p>
+                {{-- TEXT --}}
+                <div class="col-lg-6 text-center text-lg-start mb-4 mb-lg-0">
 
-            <a href="{{ route('report.create') }}" class="btn btn-primary px-4 py-2 rounded-pill">
-                Mulai Lapor →
-            </a>
+                    <h2 class="fw-bold display-6 mb-3">
+                        Laporkan dan Pantau <br>
+                        Masalah di Sekitarmu
+                    </h2>
 
-            <div class="mt-5">
-                <img src="{{ asset('assets/app/images/insight.png') }}" alt="Hero Illustration" class="img-fluid hero-image">
+                    <p class="text-muted mb-4">
+                        Sampaikan laporan dengan mudah, pantau progres secara real-time,
+                        dan bantu menciptakan lingkungan yang lebih aman dan nyaman.
+                    </p>
+
+                    <a href="{{ route('report.take') }}" class="btn btn-primary px-4 py-2 rounded-pill">
+                        Mulai Lapor →
+                    </a>
+
+                </div>
+
+                {{-- IMAGE --}}
+                <div class="col-lg-6 text-center">
+                    <img src="{{ asset('assets/app/images/insight.png') }}" alt="Hero Illustration"
+                        class="img-fluid hero-image">
+                </div>
+
             </div>
 
         </div>
-
     </div>
 
 
@@ -39,7 +48,7 @@
     <div class="mb-5 p-4 p-lg-5">
 
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <h6 class="fw-semibold">Kategori Laporan</h6>
+            <h6 class="fw-bold">Kategori Laporan</h6>
         </div>
 
         <div class="row g-4">
@@ -133,73 +142,79 @@
 
 
     {{-- ================= HOW TO USE (FINAL VERSION) ================= --}}
-    <div class="mb-5 py-5" style="background:#ffffff;">
+    <div class="mb-5 py-5">
 
-        <h4 class="fw-bold mb-4">Cara Menggunakan</h4>
+        <div class="container">
 
-        <div class="d-flex flex-column gap-4">
+            <h4 class="fw-bold mb-5 text-center">Cara Menggunakan</h4>
 
-            {{-- STEP 1 --}}
-            <div class="how-card">
+            <div class="row g-4">
 
-                <div class="image-wrapper">
+                {{-- STEP 1 --}}
+                <div class="col-md-4">
+                    <div class="how-card text-center">
 
-                    <img src="{{ asset('assets/app/images/insight.png') }}" class="img-fluid rounded-4" alt="Step 1">
+                        <div class="image-wrapper">
+                            <img src="{{ asset('assets/app/images/insight.png') }}" class="how-image" alt="Step 1">
+                            <div class="step-badge">1</div>
+                        </div>
 
-                    <div class="step-badge">1</div>
+                        <div class="text-center px-3">
+                            <h6 class="fw-semibold step-title">
+                                Pilih Kategori
+                            </h6>
 
+                            <p class="text-muted step-desc mb-0">
+                                Lengkapi detail laporan agar tim dapat
+                                menindaklanjuti dengan cepat.
+                            </p>
+                        </div>
+
+                    </div>
                 </div>
 
-                <div class="mt-3">
-                    <h5 class="fw-semibold">Pilih Kategori</h5>
-                    <p class="text-muted mb-0">
-                        Pilih kategori laporan sesuai permasalahan
-                        yang ingin Anda laporkan.
-                    </p>
+                {{-- STEP 2 --}}
+                <div class="col-md-4">
+                    <div class="how-card text-center">
+
+                        <div class="image-wrapper">
+                            <img src="{{ asset('assets/app/images/insight.png') }}" class="how-image" alt="Step 2">
+                            <div class="step-badge">2</div>
+                        </div>
+
+                        <div class="text-center px-3">
+                            <h6 class="fw-semibold step-title">
+                                Isi Detail
+                            </h6>
+
+                            <p class="text-muted step-desc mb-0">
+                                Lengkapi detail laporan agar tim dapat
+                                menindaklanjuti dengan cepat.
+                            </p>
+                        </div>
+
+                    </div>
                 </div>
 
-            </div>
+                {{-- STEP 3 --}}
+                <div class="col-md-4">
+                    <div class="how-card text-center">
 
+                        <div class="image-wrapper">
+                            <img src="{{ asset('assets/app/images/insight.png') }}" class="how-image" alt="Step 3">
+                            <div class="step-badge">3</div>
+                        </div>
 
-            {{-- STEP 2 --}}
-            <div class="how-card">
+                        <div class="text-center px-3">
+                            <h6 class="fw-semibold step-title">
+                                Pantau Progres
+                            </h6>
 
-                <div class="image-wrapper">
-
-                    <img src="{{ asset('assets/app/images/explore.jpg') }}" class="img-fluid rounded-4" alt="Step 2">
-
-                    <div class="step-badge">2</div>
-
-                </div>
-
-                <div class="mt-3">
-                    <h5 class="fw-semibold">Isi Detail</h5>
-                    <p class="text-muted mb-0">
-                        Lengkapi detail laporan agar tim dapat
-                        menindaklanjuti dengan cepat.
-                    </p>
-                </div>
-
-            </div>
-
-
-            {{-- STEP 3 --}}
-            <div class="how-card">
-
-                <div class="image-wrapper">
-
-                    <img src="{{ asset('assets/app/images/insight.png') }}" class="img-fluid rounded-4" alt="Step 3">
-
-                    <div class="step-badge">3</div>
-
-                </div>
-
-                <div class="mt-3">
-                    <h5 class="fw-semibold">Pantau Progres</h5>
-                    <p class="text-muted mb-0">
-                        Pantau status laporan secara real-time
-                        hingga selesai.
-                    </p>
+                            <p class="text-muted step-desc mb-0">
+                                Pantau progres laporan secara real-time hingga selesai
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -264,45 +279,31 @@
     </div>
 
     {{-- ================= CENTERED WHITE FOOTER ================= --}}
-    <footer class="footer-section mt-5">
+    <footer class="footer-section">
+    <div class="container text-center py-5">
 
-        <div class="container text-center py-5">
+        <h3 class="footer-brand mb-4">
+            Go-<span>Lapor</span>
+        </h3>
 
-            {{-- BRAND --}}
-            <h3 class="footer-brand mb-4">
-                Go-<span>Lapor</span>
-            </h3>
+        <ul class="footer-menu list-unstyled d-flex justify-content-center flex-wrap gap-4 mb-4">
+            <li><a href="{{ route('home') }}">Home</a></li>
+            <li><a href="{{ route('report.index') }}">Laporan</a></li>
+            <li><a href="#category">Notifikasi</a></li>
+            <li><a href="#reports">Profile</a></li>
+        </ul>
 
-            {{-- MENU --}}
-            <ul class="footer-menu list-unstyled d-flex justify-content-center flex-wrap gap-4 mb-4">
-                <li>
-                    <a href="{{ route('home') }}">Home</a>
-                </li>
-                <li>
-                    <a href="{{ route('report.index') }}">Laporan</a>
-                </li>
-                <li>
-                    <a href="#category">Notifikasi</a>
-                </li>
-                <li>
-                    <a href="#reports">Profile</a>
-                </li>
-            </ul>
-
-            {{-- SOCIAL ICONS --}}
-            <div class="footer-social d-flex justify-content-center gap-3 mb-4">
-                <a href="#"><i class="bi bi-twitter"></i></a>
-                <a href="#"><i class="bi bi-facebook"></i></a>
-                <a href="#"><i class="bi bi-instagram"></i></a>
-            </div>
-
-            {{-- COPYRIGHT --}}
-            <p class="footer-copy mb-0">
-                © {{ date('Y') }} Go-Lapor. All rights reserved.
-            </p>
-
+        <div class="footer-social d-flex justify-content-center gap-3 mb-4">
+            <a href="#"><i class="bi bi-twitter"></i></a>
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-instagram"></i></a>
         </div>
 
-    </footer>
+        <p class="footer-copy mb-0">
+            © {{ date('Y') }} Go-Lapor. All rights reserved.
+        </p>
+
+    </div>
+</footer>
 
 @endsection

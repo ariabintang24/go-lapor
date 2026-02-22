@@ -513,18 +513,6 @@ textarea.form-control {
     border: 1px solid #00000022;
 }
 
-.badge-status {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    background-color: #16752b;
-    color: #fff;
-    padding: 8px 12px;
-    border-radius: 18px;
-    font-size: 12px;
-    font-weight: 500;
-}
-
 .icon {
     width: 18px;
     height: 18px;
@@ -592,8 +580,14 @@ textarea.form-control {
 /* =====footer====== */
 /* Footer wrapper */
 .footer-section {
-    background: #ffffff;
-    border-top: 1px solid #f0f0f0;
+    width: 100%;
+    background: red; /* sementara untuk testing */
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.footer-section .container {
+    max-width: 1140px;
 }
 
 /* Brand */
@@ -647,28 +641,38 @@ textarea.form-control {
 /* ========how to use========= */
 .how-card {
     padding: 20px;
-    border-radius: 20px;
-    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    transition: 0.3s ease;
+}
+
+.how-card:hover {
+    transform: translateY(-5px);
 }
 
 .image-wrapper {
     position: relative;
 }
 
+.how-image {
+    width: 100%;
+    max-height: 220px;
+    object-fit: cover;
+    border-radius: 16px;
+}
+
 .step-badge {
     position: absolute;
-    top: 12px; /* masuk ke dalam gambar */
+    top: 12px;
     left: 12px;
-    width: 40px;
-    height: 40px;
-    background: linear-gradient(135deg, #5f4dee, #6f42c1);
+    background: linear-gradient(135deg, #6f42c1, #5f4dee);
     color: white;
+    width: 36px;
+    height: 36px;
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: bold;
-    font-size: 14px;
+    font-weight: 600;
 }
 
 /* Icon transition */
@@ -750,8 +754,8 @@ textarea.form-control {
 
 /* Base Badge */
 
-.badge-status {
-    display: flex;
+/* .badge-status {
+    display: inline-flex;
     align-items: center;
     font-size: 12px;
     font-weight: 500;
@@ -759,7 +763,34 @@ textarea.form-control {
     border-radius: 18px;
     gap: 8px;
     width: fit-content;
+} */
+
+.badge-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 500;
 }
+
+.badge-status img {
+    width: 14px;
+    height: 14px;
+}
+
+/* .badge-status {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: #16752b;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 18px;
+    font-size: 12px;
+    font-weight: 500;
+} */
 
 /* Biru - Terkirim */
 .badge-blue {
@@ -924,7 +955,7 @@ textarea.form-control {
 .pagination .page-link {
     border-radius: 10px !important;
     border: none;
-    padding: 8px 14px;
+    padding: 5px 14px;
     color: #6b7280;
     font-weight: 500;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
@@ -940,4 +971,181 @@ textarea.form-control {
     border: none;
     color: #ffffff;
     box-shadow: 0 6px 18px rgba(111, 66, 193, 0.3);
+}
+
+/* HERO */
+.report-hero img {
+    height: 350px;
+    object-fit: cover;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+/* CARD */
+.modern-card {
+    border-radius: 20px;
+    border: 1px solid #f1f1f1;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* INFO ROW */
+.info-row {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 18px;
+}
+
+.info-label {
+    width: 120px;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.info-separator {
+    width: 20px;
+    text-align: center;
+    color: #9ca3af;
+}
+
+.info-value {
+    flex: 1;
+}
+
+/* BADGE COLORS
+.badge-blue {
+    background: #e7f1ff;
+    color: #2563eb;
+    padding: 6px 12px;
+    border-radius: 50px;
+}
+
+.badge-yellow {
+    background: #fff7e6;
+    color: #f59e0b;
+    padding: 6px 12px;
+    border-radius: 50px;
+}
+
+.badge-green {
+    background: #eafbed;
+    color: #16752b;
+    padding: 6px 12px;
+    border-radius: 50px;
+}
+
+.badge-red {
+    background: #fee2e2;
+    color: #dc2626;
+    padding: 6px 12px;
+    border-radius: 50px;
+} */
+
+/* TIMELINE */
+.modern-timeline {
+    list-style: none;
+    padding-left: 0;
+    position: relative;
+}
+
+.modern-timeline li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 25px;
+}
+
+.timeline-dot {
+    width: 12px;
+    height: 12px;
+    background: #6f42c1;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 6px;
+}
+
+.modern-timeline::before {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: #e5e7eb;
+}
+
+.rounded-full {
+    border-radius: 20px;
+}
+
+/* navbar */
+@media (min-width: 992px) {
+    .nav-center {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+.nav-center .nav-link {
+    margin: 0 10px;
+    font-weight: 500;
+}
+
+.step-title {
+    font-size: 18px;
+    margin-top: 18px;
+    margin-bottom: 8px;
+}
+
+.step-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 260px;
+    margin: 0 auto;
+}
+
+/* profile */
+
+.profile-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.profile-card {
+    border-radius: 20px;
+    border: 1px solid #f0f0f0;
+}
+
+.profile-avatar {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.profile-stat {
+    padding: 18px;
+    background: #ffffff;
+    border-radius: 14px;
+    border: 1px solid #e9ecef; /* border tipis */
+    transition: 0.2s ease;
+}
+
+.profile-stat:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.profile-menu-card {
+    border-radius: 20px;
+    border: 1px solid #f0f0f0;
+}
+
+.list-group-item {
+    border: none;
+    padding: 16px 12px;
+    font-weight: 500;
+}
+
+.list-group-item:hover {
+    background: #f9fafb;
 }

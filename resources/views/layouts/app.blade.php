@@ -21,7 +21,7 @@
 
     </div>
 
-    <a href="{{ route('report.create') }}" class="floating-report-btn">
+    <a href="{{ route('report.take') }}" class="floating-report-btn">
         <i class="fa-solid fa-camera"></i>
     </a>
 

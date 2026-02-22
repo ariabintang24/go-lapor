@@ -50,7 +50,7 @@
                                     <div class="d-flex align-items-center gap-2">
                                         <img src="{{ asset('assets/app/images/icons/MapPin.png') }}" width="14">
                                         <span class="text-success small">
-                                            {{ \Str::limit($report->address, 30) }}
+                                            {{ \Str::limit($report->address, 20) }}
                                         </span>
                                     </div>
 

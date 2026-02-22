@@ -22,7 +22,7 @@ class ReportRepository implements ReportRepositoryInterface
     {
         return Report::with('reportStatuses')
             ->latest()
-            ->take(6)
+            ->take(3)
             ->get();
     }
 

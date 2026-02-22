@@ -4,154 +4,156 @@
 
 @section('content')
 
-    <div class="header-nav">
-        <a href="{{ route('home') }}">
-            <img src="{{ asset('assets/app/images/icons/ArrowLeft.svg') }}" alt="arrow-left">
-        </a>
+    <div class="container py-4">
 
-        <h1>Detail Laporan {{ $report->code }}</h1>
-    </div>
-
-    <img src="{{ asset('storage/' . $report->image) }}" alt="" class="report-image mt-5">
-
-    <h1 class="report-title mt-3">{{ $report->title }}</h1>
-
-    <div class="card card-report-information mt-4">
-        <div class="card-body">
-            <div class="card-title mb-4 fw-bold">Detail Informasi</div>
-
-            {{-- Kode --}}
-            <div class="row mb-3">
-                <div class="col-4 text-secondary">Kode</div>
-                <div class="col-8 d-flex">
-                    <span class="me-2">
-                        :
-                    </span>
-                    <p>
-                        {{ $report->code }}
-                    </p>
-                </div>
-            </div>
-
-            {{-- Tanggal --}}
-            <div class="row mb-3">
-                <div class="col-4 text-secondary">Tanggal</div>
-                <div class="col-8 d-flex">
-                    <span class="me-2">
-                        :
-                    </span>
-                    <p>
-                        {{ \Carbon\Carbon::parse($report->created_at)->format('d M Y | H:i') }}
-                    </p>
-                </div>
-            </div>
-
-            {{-- Kategori --}}
-            <div class="row mb-3">
-                <div class="col-4 text-secondary">Kategori</div>
-                <div class="col-8 d-flex">
-                    <span class="me-2">
-                        :
-                    </span>
-                    <p>
-                        {{ $report->reportCategory->name }}
-                    </p>
-                </div>
-            </div>
-
-            {{-- Lokasi --}}
-            <div class="row mb-3">
-                <div class="col-4 text-secondary">Lokasi</div>
-                <div class="col-8 d-flex">
-                    <span class="me-2">
-                        :
-                    </span>
-                    <p>
-                        {{ $report->address }}
-                    </p>
-                </div>
-            </div>
-
-            {{-- Status --}}
-            <div class="row mb-3">
-                <div class="col-4 text-secondary">Status</div>
-                <div class="col-8 d-flex">
-                    <span class="me-2">
-                        :
-                    </span>
-
-                    @php
-                        $lastStatus = $report->reportStatuses->last()?->status;
-                    @endphp
-
-                    @if ($lastStatus)
-                        @switch($lastStatus)
-                            @case('delivered')
-                                <div class="badge-status badge-blue">
-                                    <img src="{{ asset('assets/app/images/icons/CircleNotch.svg') }}">
-                                    <p>Terkirim</p>
-                                </div>
-                            @break
-
-                            @case('in_process')
-                                <div class="badge-status badge-yellow">
-                                    <img src="{{ asset('assets/app/images/icons/CircleNotch.svg') }}">
-                                    <p>Diproses</p>
-                                </div>
-                            @break
-
-                            @case('completed')
-                                <div class="badge-status badge-green">
-                                    <img src="{{ asset('assets/app/images/icons/Checks.svg') }}">
-                                    <p>Selesai</p>
-                                </div>
-                            @break
-
-                            @case('rejected')
-                                <div class="badge-status badge-red">
-                                    <p>Ditolak</p>
-                                </div>
-                            @break
-                        @endswitch
-                    @endif
-                </div>
-            </div>
-
-            {{-- Deskripsi --}}
-            <div class="row mb-3">
-                <div class="col-4 text-secondary">Deskripsi</div>
-                <div class="col-8 d-flex">
-                    <span class="me-2">:</span>
-                    <p>
-                        {{ $report->description }}
-                    </p>
-                </div>
-            </div>
-
+        {{-- BACK + TITLE --}}
+        <div class="d-flex align-items-center gap-3 mb-4">
+            <a href="{{ route('report.index') }}" class="text-decoration-none">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+            <h4 class="mb-0 fw-bold">Detail Laporan {{ $report->code }}</h4>
         </div>
-    </div>
 
-    <div class="card card-report-information mt-4">
-        <div class="card-body">
-            <div class="card-title mb-4 fw-bold">Riwayat Perkembangan</div>
+        {{-- HERO IMAGE --}}
+        <div class="report-hero mb-4">
+            <img src="{{ asset('storage/' . $report->image) }}" class="img-fluid w-100">
+        </div>
 
-            <ul class="timeline">
+        {{-- TITLE --}}
+        <h3 class="fw-bold mb-4">{{ $report->title }}</h3>
 
-                @foreach ($report->reportStatuses as $status)
-                    <li class="timeline-item">
-                        <div class="timeline-item-content">
-                            @if ($status->image)
-                                <img src="{{ asset('storage/' . $status->image) }}" alt="image" class="img-fluid">
-                            @endif
-                            <span
-                                class="timeline-date">{{ \Carbon\Carbon::parse($report->created_at)->format('d M Y | H:i') }}</span>
-                            <span class="timeline-event">{{ $status->description }}</span>
+        {{-- GRID LAYOUT --}}
+        <div class="row g-4">
+
+            {{-- LEFT: DETAIL --}}
+            <div class="col-12 col-lg-7">
+                <div class="card modern-card h-100">
+                    <div class="card-body">
+
+                        <h6 class="fw-bold mb-4">Detail Informasi</h6>
+
+                        <div class="info-row">
+                            <div class="info-label">Kode</div>
+                            <div class="info-separator">:</div>
+                            <div class="info-value">{{ $report->code }}</div>
                         </div>
-                    </li>
-                @endforeach
 
-            </ul>
+                        <div class="info-row">
+                            <div class="info-label">Tanggal</div>
+                            <div class="info-separator">:</div>
+                            <div class="info-value">
+                                {{ \Carbon\Carbon::parse($report->created_at)->format('d M Y | H:i') }}
+                            </div>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label">Kategori</div>
+                            <div class="info-separator">:</div>
+                            <div class="info-value">
+                                {{ $report->reportCategory->name }}
+                            </div>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label">Lokasi</div>
+                            <div class="info-separator">:</div>
+                            <div class="info-value">
+                                {{ $report->address }}
+                            </div>
+                        </div>
+
+                        {{-- STATUS --}}
+                        <div class="info-row">
+                            <div class="info-label">Status</div>
+                            <div class="info-separator">:</div>
+                            <div class="info-value">
+
+                                @php
+                                    $lastStatus = $report->reportStatuses->last()?->status;
+                                @endphp
+
+                                @if ($lastStatus)
+                                    @switch($lastStatus)
+                                        @case('delivered')
+                                            <div class="badge-status badge-blue">
+                                                <span>Terkirim</span>
+                                            </div>
+                                        @break
+
+                                        @case('in_process')
+                                            <div class="badge-status badge-yellow">
+                                                <span>Diproses</span>
+                                            </div>
+                                        @break
+
+                                        @case('completed')
+                                            <div class="badge-status badge-green">
+                                                <span>Selesai</span>
+                                            </div>
+                                        @break
+
+                                        @case('rejected')
+                                            <div class="badge-status badge-red">
+                                                <span>Ditolak</span>
+                                            </div>
+                                        @break
+                                    @endswitch
+                                @endif
+
+                            </div>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label">Deskripsi</div>
+                            <div class="info-separator">:</div>
+                            <div class="info-value">
+                                {{ $report->description }}
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            {{-- RIGHT: TIMELINE --}}
+            <div class="col-12 col-lg-5">
+                <div class="card modern-card h-100">
+                    <div class="card-body">
+
+                        <h6 class="fw-bold mb-4">Riwayat Perkembangan</h6>
+
+                        <ul class="modern-timeline">
+
+                            @foreach ($report->reportStatuses as $status)
+                                <li>
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-content">
+
+                                        <small class="text-muted d-block mb-1">
+                                            {{ \Carbon\Carbon::parse($status->created_at)->format('d M Y | H:i') }}
+                                        </small>
+
+                                        <div class="fw-medium mb-2">
+                                            {{ $status->description }}
+                                        </div>
+
+                                        @if ($status->image)
+                                            <img src="{{ asset('storage/' . $status->image) }}"
+                                                class="img-fluid rounded-3 mt-2">
+                                        @endif
+
+                                    </div>
+                                </li>
+                            @endforeach
+
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+
         </div>
+
     </div>
 
 @endsection

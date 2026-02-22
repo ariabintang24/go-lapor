@@ -1,48 +1,49 @@
-<div class="d-flex flex-column gap-3">
+<div class="row g-4">
 
     @foreach ($reports as $report)
-        <div class="card card-report border-0 shadow-none">
+        <div class="col-12 col-md-6 col-xl-4">
 
             <a href="{{ route('report.show', $report->code) }}" class="text-decoration-none text-dark">
 
-                <div class="card-body p-0">
+                <div class="modern-report-card h-100">
 
                     {{-- IMAGE --}}
-                    <div class="card-report-image position-relative mb-2">
+                    <div class="modern-report-image-wrapper">
 
-                        <img src="{{ asset('storage/' . $report->image) }}" alt="Report Image" class="w-100 rounded-3">
+                        <img src="{{ asset('storage/' . $report->image) }}" class="modern-report-image" alt="Report Image">
 
                         {{-- STATUS BADGE --}}
                         @if ($report->latest_status)
-                            <div class="badge-status {{ $report->latest_status['class'] }}">
+                            <span class="modern-report-badge {{ $report->latest_status['class'] }}">
                                 {{ $report->latest_status['label'] }}
-                            </div>
+                            </span>
                         @endif
 
                     </div>
 
-                    {{-- ADDRESS + DATE --}}
-                    <div class="d-flex justify-content-between align-items-end mb-2">
+                    {{-- CONTENT --}}
+                    <div class="modern-report-body">
 
-                        <div class="d-flex align-items-center">
-                            <img src="{{ asset('assets/app/images/icons/MapPin.png') }}" alt="map pin"
-                                class="icon me-2">
+                        <div class="modern-report-meta">
 
-                            <p class="text-primary city mb-0">
-                                {{ \Illuminate\Support\Str::limit($report->address, 20) }}
-                            </p>
+                            <div class="d-flex align-items-center gap-2">
+                                <img src="{{ asset('assets/app/images/icons/MapPin.png') }}" style="width:14px;">
+                                <span class="text-success small">
+                                    {{ \Illuminate\Support\Str::limit($report->address, 25) }}
+                                </span>
+                            </div>
+
+                            <span class="text-muted small">
+                                {{ $report->created_at->format('d M Y') }}
+                            </span>
+
                         </div>
 
-                        <p class="text-secondary date mb-0">
-                            {{ $report->created_at->format('d M Y | H:i') }}
-                        </p>
+                        <h6 class="modern-report-title">
+                            {{ $report->title }}
+                        </h6>
 
                     </div>
-
-                    {{-- TITLE --}}
-                    <h6 class="card-title fw-bold">
-                        {{ $report->title }}
-                    </h6>
 
                 </div>
 
