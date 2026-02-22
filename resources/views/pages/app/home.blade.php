@@ -44,11 +44,11 @@
 
         <div class="row g-4">
             @foreach ($categories as $category)
-                <div class="col-6 col-lg-4">
+                <div class="col-6 col-md-4 col-lg-2">
                     <a href="{{ route('report.index', ['category' => $category->name]) }}"
                         class="text-decoration-none text-dark">
 
-                        <div class="card border-0 shadow-sm h-100 text-center p-3 rounded-4xl">
+                        <div class="card border-0 shadow-sm h-100 text-center p-3 rounded-full">
 
                             <div class="mb-2 icon-hover">
                                 <img src="{{ asset('storage/' . $category->image) }}" class="kategori-icon"
@@ -209,69 +209,51 @@
     </div>
 
     {{-- ================= CONTACT US ================= --}}
-    {{-- ================= CONTACT US ================= --}}
-    <div class="mb-5">
+    <div class="contact-section py-5">
 
-        <div class="text-center mb-4">
-            <h4 class="fw-bold">Reach out to us</h4>
-            <p class="text-muted small">
+        <div class="text-center mb-5">
+            <h3 class="fw-bold mb-2">Hubungi Kami</h3>
+            <p class="text-muted">
                 Punya pertanyaan atau masukan? Kirim pesan kepada kami.
             </p>
         </div>
 
-        {{-- Success Alert --}}
-        @if (request()->query('contact') == 'success')
-            <div class="alert alert-success rounded-4">
-                Pesan berhasil dikirim! Kami akan segera menghubungi Anda.
-            </div>
-        @endif
-
-        <div class="card border-0 shadow-sm rounded-4 p-4">
+        <div class="contact-wrapper mx-auto">
 
             <form action="https://api.web3forms.com/submit" method="POST">
 
-                {{-- WEB3FORMS ACCESS KEY --}}
                 <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
-
-                {{-- Redirect kembali ke halaman ini --}}
                 <input type="hidden" name="redirect" value="{{ url('/?contact=success') }}">
+                <input type="checkbox" name="botcheck" class="d-none">
 
-                {{-- Honeypot Anti Spam --}}
-                <input type="checkbox" name="botcheck" class="d-none" style="display:none;">
+                <div class="row g-4">
 
-                {{-- NAME --}}
-                <div class="mb-3 position-relative">
-                    <label class="form-label">Your name</label>
+                    {{-- NAME --}}
+                    <div class="col-12 col-md-6">
+                        <label class="form-label">Nama</label>
+                        <input type="text" name="name" required class="form-control custom-input"
+                            placeholder="Masukkan nama Anda">
+                    </div>
 
-                    <i class="bi bi-person position-absolute" style="top: 42px; left: 15px; color:#9ca3af;"></i>
+                    {{-- EMAIL --}}
+                    <div class="col-12 col-md-6">
+                        <label class="form-label">Email</label>
+                        <input type="email" name="email" required class="form-control custom-input"
+                            placeholder="Masukkan email Anda">
+                    </div>
 
-                    <input type="text" name="name" required class="form-control rounded-pill ps-5 py-2"
-                        placeholder="Enter your name">
+                    {{-- MESSAGE --}}
+                    <div class="col-12">
+                        <label class="form-label">Pesan</label>
+                        <textarea name="message" rows="6" required class="form-control custom-textarea"
+                            placeholder="Tulis pesan Anda..."></textarea>
+                    </div>
+
                 </div>
 
-                {{-- EMAIL --}}
-                <div class="mb-3 position-relative">
-                    <label class="form-label">Email id</label>
-
-                    <i class="bi bi-envelope position-absolute" style="top: 42px; left: 15px; color:#9ca3af;"></i>
-
-                    <input type="email" name="email" required class="form-control rounded-pill ps-5 py-2"
-                        placeholder="Enter your email">
-                </div>
-
-                {{-- MESSAGE --}}
-                <div class="mb-4">
-                    <label class="form-label">Message</label>
-
-                    <textarea name="message" rows="4" required class="form-control rounded-4 py-2"
-                        placeholder="Enter your message"></textarea>
-                </div>
-
-                {{-- BUTTON --}}
-                <div class="d-grid">
-                    <button type="submit" class="btn text-white fw-semibold py-2 rounded-pill"
-                        style="background: linear-gradient(90deg, #5f4dee, #6f42c1); border:none;">
-                        Submit →
+                <div class="mt-4">
+                    <button type="submit" class="btn contact-btn">
+                        Kirim →
                     </button>
                 </div>
 
@@ -282,51 +264,41 @@
     </div>
 
     {{-- ================= CENTERED WHITE FOOTER ================= --}}
-    <footer class="pt-5 pb-4 text-center" style="background:#ffffff; border-top:1px solid #e5e7eb;">
+    <footer class="footer-section mt-5">
 
-        <div class="container">
+        <div class="container text-center py-5">
 
             {{-- BRAND --}}
-            <h3 class="fw-bold mb-4" style="color:#111827;">
-                Go-<span style="color:#6f42c1;">Lapor</span>
+            <h3 class="footer-brand mb-4">
+                Go-<span>Lapor</span>
             </h3>
 
             {{-- MENU --}}
-            <ul class="list-inline mb-4 footer-menu small fw-semibold">
-                <li class="list-inline-item mx-3">
-                    <a href="{{ route('home') }}" class="footer-link">Home</a>
+            <ul class="footer-menu list-unstyled d-flex justify-content-center flex-wrap gap-4 mb-4">
+                <li>
+                    <a href="{{ route('home') }}">Home</a>
                 </li>
-                <li class="list-inline-item mx-3">
-                    <a href="{{ route('report.index') }}" class="footer-link">Laporan</a>
+                <li>
+                    <a href="{{ route('report.index') }}">Laporan</a>
                 </li>
-                <li class="list-inline-item mx-3">
-                    <a href="#category" class="footer-link">Notifikasi</a>
+                <li>
+                    <a href="#category">Notifikasi</a>
                 </li>
-                <li class="list-inline-item mx-3">
-                    <a href="#reports" class="footer-link">Profile</a>
+                <li>
+                    <a href="#reports">Profile</a>
                 </li>
             </ul>
 
             {{-- SOCIAL ICONS --}}
-            <div class="d-flex justify-content-center gap-3 mb-4">
-
-                <a href="#" class="social-circle">
-                    <i class="bi bi-twitter"></i>
-                </a>
-
-                <a href="#" class="social-circle">
-                    <i class="bi bi-facebook"></i>
-                </a>
-
-                <a href="#" class="social-circle">
-                    <i class="bi bi-instagram"></i>
-                </a>
-
+            <div class="footer-social d-flex justify-content-center gap-3 mb-4">
+                <a href="#"><i class="bi bi-twitter"></i></a>
+                <a href="#"><i class="bi bi-facebook"></i></a>
+                <a href="#"><i class="bi bi-instagram"></i></a>
             </div>
 
             {{-- COPYRIGHT --}}
-            <p class="small text-muted mb-0">
-                Copyright ©{{ date('Y') }} All rights reserved
+            <p class="footer-copy mb-0">
+                © {{ date('Y') }} Go-Lapor. All rights reserved.
             </p>
 
         </div>

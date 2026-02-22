@@ -266,43 +266,6 @@ textarea.form-control {
     margin-left: 1rem;
 }
 
-.floating-button-container {
-    position: fixed;
-    bottom: 35px;
-    /* Sesuaikan dengan posisi vertikal yang diinginkan */
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 999;
-    background-color: white !important;
-    padding: 0.5rem;
-    border-radius: 50%;
-    z-index: 1050;
-}
-
-.floating-button {
-    background-color: var(--primary);
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    font-size: 18px;
-    cursor: pointer;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.floating-button::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: white;
-    border-radius: 50%;
-    z-index: -1;
-}
-
 .input-search input {
     border: none;
     border-radius: 0.5rem;
@@ -562,8 +525,6 @@ textarea.form-control {
     font-weight: 500;
 }
 
-
-
 .icon {
     width: 18px;
     height: 18px;
@@ -576,13 +537,6 @@ textarea.form-control {
     object-position: center;
     border-radius: 0.5rem;
 }
-
-.report-title {
-    font-size: 20px;
-    font-weight: 500;
-}
-
-
 
 #lottie {
     width: 250px;
@@ -636,28 +590,58 @@ textarea.form-control {
 }
 
 /* =====footer====== */
-.footer-link {
-    text-decoration: none;
-    color: #374151;
-    transition: 0.3s;
-    letter-spacing: 0.5px;
+/* Footer wrapper */
+.footer-section {
+    background: #ffffff;
+    border-top: 1px solid #f0f0f0;
 }
 
-.footer-link:hover {
+/* Brand */
+.footer-brand {
+    font-weight: 700;
+    font-size: 28px;
+    color: #111827;
+}
+
+.footer-brand span {
     color: #6f42c1;
 }
 
-.social-circle {
+/* Menu */
+.footer-menu a {
+    text-decoration: none;
+    font-weight: 500;
+    color: #6b7280;
+    transition: 0.3s ease;
+}
+
+.footer-menu a:hover {
+    color: #6f42c1;
+}
+
+/* Social */
+.footer-social a {
     width: 42px;
     height: 42px;
-    border: 1.5px solid #6f42c1;
     border-radius: 50%;
+    border: 1px solid #e5e7eb;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #6f42c1;
-    transition: 0.3s;
-    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.footer-social a:hover {
+    background: #6f42c1;
+    color: #ffffff;
+    transform: translateY(-3px);
+}
+
+/* Copyright */
+.footer-copy {
+    font-size: 14px;
+    color: #9ca3af;
 }
 
 /* ========how to use========= */
@@ -711,7 +695,7 @@ textarea.form-control {
 /* Hover */
 .modern-report-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
 }
 
 /* Image */
@@ -801,38 +785,159 @@ textarea.form-control {
     color: #dc2626;
 }
 
+/* Wrapper agar tidak terlalu lebar */
+.contact-wrapper {
+    max-width: 700px;
+}
 
-/* .badge-pending {
+/* Input style clean */
+.custom-input {
+    height: 50px;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    padding: 0 15px;
+    transition: 0.3s ease;
+}
+
+.custom-input:focus {
+    border-color: #6f42c1;
+    box-shadow: 0 0 0 3px rgba(111, 66, 193, 0.1);
+}
+
+/* Textarea */
+.custom-textarea {
+    border-radius: 16px;
+    border: 1px solid #e5e7eb;
+    padding: 15px;
+    transition: 0.3s ease;
+}
+
+.custom-textarea:focus {
+    border-color: #6f42c1;
+    box-shadow: 0 0 0 3px rgba(111, 66, 193, 0.1);
+}
+
+/* Button */
+.contact-btn {
+    background: linear-gradient(90deg, #5f4dee, #6f42c1);
+    color: #fff;
+    padding: 8px 30px;
+    border-radius: 50px;
+    border: none;
+    transition: 0.3s ease;
+}
+
+.contact-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(111, 66, 193, 0.25);
+}
+
+.floating-report-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #5f4dee, #6f42c1);
+    color: #ffffff;
+    border-radius: 50%;
     display: flex;
     align-items: center;
-    background-color: #ffebcc;
-    color: #feac30;
-    font-size: 12px;
-    font-weight: 500;
-    padding: 8px 12px;
-    border-radius: 18px;
-    gap: 8px;
-    width: fit-content;
+    justify-content: center;
+    font-size: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    transition: all 0.3s ease;
+    text-decoration: none;
 }
 
-.badge-success {
+.floating-report-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+    color: #ffffff;
+}
+
+/* CARD */
+.report-card-modern {
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+}
+
+.report-card-modern:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* IMAGE */
+.report-image-wrapper {
+    position: relative;
+}
+
+.report-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+/* BADGE */
+.report-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 6px 14px;
+    font-size: 12px;
+    border-radius: 50px;
+    font-weight: 500;
+}
+
+/* BODY */
+.report-body {
+    padding: 18px;
+}
+
+.report-meta {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    background-color: #eafbed;
-    color: #16752b;
-    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.report-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* .report-title {
+    font-size: 20px;
     font-weight: 500;
-    padding: 8px 12px;
-    border-radius: 18px;
-    gap: 8px;
-    width: fit-content;
-}
-
-.badge-status.on-process {
-    background-color: #ffebcc;
-    color: #feac30;
-}
-
-.badge-status.done {
-    background-color: #16752b;
 } */
+
+/* PAGINATION */
+.pagination {
+    gap: 6px;
+}
+
+.pagination .page-link {
+    border-radius: 10px !important;
+    border: none;
+    padding: 8px 14px;
+    color: #6b7280;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+}
+
+.pagination .page-link:hover {
+    background: #f3f4f6;
+}
+
+.pagination .active .page-link {
+    background: linear-gradient(135deg, #5f4dee, #6f42c1);
+    border: none;
+    color: #ffffff;
+    box-shadow: 0 6px 18px rgba(111, 66, 193, 0.3);
+}

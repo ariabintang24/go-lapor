@@ -21,6 +21,9 @@
 
     </div>
 
+    <a href="{{ route('report.create') }}" class="floating-report-btn">
+        <i class="fa-solid fa-camera"></i>
+    </a>
 
     @include('includes.nav-mobile')
 

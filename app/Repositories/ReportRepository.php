@@ -12,14 +12,17 @@ class ReportRepository implements ReportRepositoryInterface
 {
     public function getAllReports()
     {
-        return Report::all();
+        return Report::with('reportStatuses')
+            ->latest()
+            ->paginate(6)
+            ->withQueryString();
     }
 
     public function getLatestReports()
     {
         return Report::with('reportStatuses')
             ->latest()
-            ->take(5)
+            ->take(6)
             ->get();
     }
 
@@ -30,8 +33,17 @@ class ReportRepository implements ReportRepositoryInterface
 
     public function getReportsByCategory(string $category)
     {
-        $category = ReportCategory::where('name', $category)->first();
-        return Report::where('report_category_id', $category->id)->get();
+        $categoryModel = ReportCategory::where('name', $category)->first();
+
+        if (!$categoryModel) {
+            return Report::whereRaw('1 = 0')->paginate(6);
+        }
+
+        return Report::with('reportStatuses')
+            ->where('report_category_id', $categoryModel->id)
+            ->latest()
+            ->paginate(6)
+            ->withQueryString();
     }
 
     public function getReportsByResidentId(string $status)
