@@ -21,6 +21,9 @@
 
     </div>
 
+    {{-- FOOTER FULL WIDTH --}}
+    @include('includes.footer')
+
     <a href="{{ route('report.take') }}" class="floating-report-btn">
         <i class="fa-solid fa-camera"></i>
     </a>

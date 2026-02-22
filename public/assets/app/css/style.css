@@ -579,66 +579,68 @@ textarea.form-control {
 }
 
 /* =====footer====== */
-/* Footer wrapper */
 .footer-section {
-    width: 100%;
-    background: red; /* sementara untuk testing */
-    padding-top: 60px;
-    padding-bottom: 60px;
+    background: #ffffff;
+    border-top: 1px solid #e9ecef;
+    padding: 20px 0;
 }
 
 .footer-section .container {
-    max-width: 1140px;
+    padding-top: 0;
 }
 
-/* Brand */
-.footer-brand {
-    font-weight: 700;
-    font-size: 28px;
-    color: #111827;
+.footer-title span {
+    color: #198754;
 }
 
-.footer-brand span {
-    color: #6f42c1;
+.footer-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border: 1px solid #e9ecef;
+    border-radius: 10px;
+    font-size: 14px;
+    background: #f8f9fa;
 }
 
-/* Menu */
-.footer-menu a {
+.footer-links li {
+    margin-bottom: 8px;
+}
+
+.footer-links a {
     text-decoration: none;
-    font-weight: 500;
-    color: #6b7280;
-    transition: 0.3s ease;
+    color: #6c757d;
+    transition: 0.2s;
+    font-size: 14px;
 }
 
-.footer-menu a:hover {
-    color: #6f42c1;
-}
-
-/* Social */
 .footer-social a {
     width: 42px;
     height: 42px;
-    border-radius: 50%;
-    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    border: 1px solid #dee2e6;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #6f42c1;
-    transition: 0.3s ease;
+    color: #495057;
+    transition: 0.3s;
+    background: #f8f9fa;
 }
 
-.footer-social a:hover {
-    background: #6f42c1;
-    color: #ffffff;
-    transform: translateY(-3px);
-}
 
-/* Copyright */
-.footer-copy {
-    font-size: 14px;
-    color: #9ca3af;
-}
 
+/* Tambahan khusus mobile */
+@media (max-width: 768px) {
+    .footer-section .container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .footer-box {
+        font-size: 13px;
+    }
+}
 /* ========how to use========= */
 .how-card {
     padding: 20px;

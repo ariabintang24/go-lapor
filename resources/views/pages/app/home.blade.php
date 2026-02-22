@@ -155,7 +155,7 @@
                     <div class="how-card text-center">
 
                         <div class="image-wrapper">
-                            <img src="{{ asset('assets/app/images/insight.png') }}" class="how-image" alt="Step 1">
+                            <img src="{{ asset('assets/app/images/step-1.jpeg') }}" class="how-image" alt="Step 1">
                             <div class="step-badge">1</div>
                         </div>
 
@@ -178,7 +178,7 @@
                     <div class="how-card text-center">
 
                         <div class="image-wrapper">
-                            <img src="{{ asset('assets/app/images/insight.png') }}" class="how-image" alt="Step 2">
+                            <img src="{{ asset('assets/app/images/step-2.jpeg') }}" class="how-image" alt="Step 2">
                             <div class="step-badge">2</div>
                         </div>
 
@@ -201,7 +201,7 @@
                     <div class="how-card text-center">
 
                         <div class="image-wrapper">
-                            <img src="{{ asset('assets/app/images/insight.png') }}" class="how-image" alt="Step 3">
+                            <img src="{{ asset('assets/app/images/step-3.jpeg') }}" class="how-image" alt="Step 3">
                             <div class="step-badge">3</div>
                         </div>
 
@@ -279,31 +279,6 @@
     </div>
 
     {{-- ================= CENTERED WHITE FOOTER ================= --}}
-    <footer class="footer-section">
-    <div class="container text-center py-5">
-
-        <h3 class="footer-brand mb-4">
-            Go-<span>Lapor</span>
-        </h3>
-
-        <ul class="footer-menu list-unstyled d-flex justify-content-center flex-wrap gap-4 mb-4">
-            <li><a href="{{ route('home') }}">Home</a></li>
-            <li><a href="{{ route('report.index') }}">Laporan</a></li>
-            <li><a href="#category">Notifikasi</a></li>
-            <li><a href="#reports">Profile</a></li>
-        </ul>
-
-        <div class="footer-social d-flex justify-content-center gap-3 mb-4">
-            <a href="#"><i class="bi bi-twitter"></i></a>
-            <a href="#"><i class="bi bi-facebook"></i></a>
-            <a href="#"><i class="bi bi-instagram"></i></a>
-        </div>
-
-        <p class="footer-copy mb-0">
-            © {{ date('Y') }} Go-Lapor. All rights reserved.
-        </p>
-
-    </div>
-</footer>
+    
 
 @endsection
