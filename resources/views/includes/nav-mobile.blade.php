@@ -29,12 +29,12 @@
                     </a>
                 </li>
 
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('notification.*') ? 'fw-bold active' : '' }}"
                         href="#">
                         Notifikasi
                     </a>
-                </li>
+                </li> --}}
 
                 @auth
                     <li class="nav-item">

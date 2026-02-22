@@ -35,7 +35,7 @@
                 <ul class="footer-links list-unstyled d-inline-block text-start">
                     <li><a href="{{ route('home') }}">Home</a></li>
                     <li><a href="{{ route('report.index') }}">Laporan</a></li>
-                    <li><a href="#">Notifikasi</a></li>
+                    {{-- <li><a href="#">Notifikasi</a></li> --}}
                 </ul>
 
             </div>

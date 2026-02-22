@@ -3,64 +3,90 @@
 @section('title', 'Masuk')
 
 @section('content')
-    <h5 class="fw-bold mt-5">Selamat datang di Lapor Pak 👋</h5>
-    <p class="text-muted mt-2">Silahkan masuk untuk melanjutkan</p>
 
-    <button class="btn btn-primary py-2 w-100 mt-4" type="button">
-        <i class="fa-brands fa-google me-2"></i>
-        Masuk dengan Google
-    </button>
+    <div class="auth-wrapper d-flex align-items-center justify-content-center">
 
-    <div class="d-flex align-items-center mt-2">
-        <hr class="flex-grow-1">
-        <span class="mx-2">atau</span>
-        <hr class="flex-grow-1">
+        <div class="auth-card">
+
+            <div class="text-center mb-4">
+                <h4 class="fw-bold mb-1">Selamat datang di Go-Lapor</h4>
+                <p class="text-muted small mb-0 mt-2">
+                    Silahkan masuk untuk melanjutkan
+                </p>
+            </div>
+
+            {{-- <button class="btn btn-success w-100 py-2 rounded-pill mb-3">
+                <i class="fa-brands fa-google me-2"></i>
+                Masuk dengan Google
+            </button>
+
+            <div class="d-flex align-items-center mb-3">
+                <hr class="grow">
+                <span class="mx-2 small text-muted">atau</span>
+                <hr class="grow">
+            </div> --}}
+
+            @if (session()->has('success'))
+                <div class="alert alert-success small">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            <form action="{{ route('login.store') }}" method="POST">
+                @csrf
+
+                <div class="mb-3">
+                    <label class="form-label small">Email</label>
+                    <input type="email" class="form-control @error('email') is-invalid @enderror" name="email">
+                    @error('email')
+                        <div class="invalid-feedback small">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label small">Password</label>
+                    <input type="password" class="form-control @error('password') is-invalid @enderror" name="password">
+                    @error('password')
+                        <div class="invalid-feedback small">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <button class="btn btn-success w-100 rounded-pill mt-2">
+                    Masuk
+                </button>
+
+                <div class="d-flex justify-content-between mt-3 small">
+                    <a href="{{ route('register') }}" class="text-decoration-none text-primary small">
+                        Belum punya akun?
+                    </a>
+                    <a href="#" class="text-decoration-none text-primary small">
+                        Lupa Password
+                    </a>
+                </div>
+
+            </form>
+
+        </div>
+
     </div>
 
-    @if (session()->has('success'))
-        <div class="alert alert-success alert-dismissible d-flex align-items-center" role="alert"
-            style="background-color: #e6f9e6; border-color: #b2eb2b;">
-            <i class="fas fa-check-circle me-2" style="color: #28a745;"></i>
-            <div>
-                {{ session('success') }}
-            </div>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
+    <style>
+        .auth-wrapper {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
 
-
-    <form action="{{ route('login.store') }}" method="POST" class="mt-4">
-        @csrf
-        <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email">
-            @error('email')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-            @enderror
-        </div>
-
-        <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control @error('password') is-invalid @enderror" id="password"
-                name="password">
-            @error('password')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-            @enderror
-        </div>
-
-        <button class="btn btn-primary w-100 mt-2" type="submit" color="primary" id="btn-login">
-            Masuk
-        </button>
-
-        <div class="d-flex justify-content-between mt-3">
-            <a href="{{ route('register') }}" class="text-decoration-none text-primary">Belum punya akun?</a>
-            <a href="" class="text-decoration-none text-primary">Lupa
-                Password</a>
-        </div>
-
-    </form>
+        .auth-card {
+            width: 100%;
+            max-width: 420px;
+            /* Ini yang bikin desktop tidak melebar */
+            background: #ffffff;
+            padding: 32px 28px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+    </style>
 @endsection
