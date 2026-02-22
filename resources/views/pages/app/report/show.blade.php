@@ -11,7 +11,7 @@
             <a href="{{ route('report.index') }}" class="text-decoration-none">
                 <i class="fa-solid fa-arrow-left"></i>
             </a>
-            <h4 class="mb-0 fw-bold">Detail Laporan {{ $report->code }}</h4>
+            <h4 class="mb-0 fw-semibold">Detail Laporan {{ $report->code }}</h4>
         </div>
 
         {{-- HERO IMAGE --}}
