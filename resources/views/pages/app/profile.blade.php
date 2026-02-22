@@ -3,66 +3,118 @@
 @section('title', 'Profil Saya')
 
 @section('content')
-    <div class="d-flex flex-column justify-content-center align-items-center gap-2">
-        @auth
-            <img src="{{ asset('storage/' . auth()->user()?->resident?->avatar) }}" alt="avatar" class="avatar">
-            <h5>{{ auth()->user()->name }}</h5>
-        @endauth
-    </div>
 
-    <div class="row mt-4">
-        <div class="col-6">
-            <div class="card profile-stats">
-                <div class="card-body">
-                    <h5 class="card-title">2</h5>
-                    <p class="card-text">Laporan Aktif</p>
+    <div class="profile-wrapper">
+
+        <div class="row g-4">
+
+            {{-- LEFT SIDE --}}
+            <div class="col-lg-6">
+
+                <div class="card profile-card text-center p-4">
+
+                    @auth
+                        <div class="d-flex justify-content-center">
+                            <img src="{{ asset('storage/' . auth()->user()?->resident?->avatar) }}" class="profile-avatar"
+                                alt="avatar">
+                        </div>
+
+                        <h5 class="fw-semibold mt-3 mb-4 text-center">
+                            {{ auth()->user()->name }}
+                        </h5>
+                    @endauth
+
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <div class="profile-stat">
+                                <h4 class="mb-1">2</h4>
+                                <p class="text-muted small mb-0 text-nowrap">
+                                    Laporan Terkirim
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="profile-stat">
+                                <h4 class="mb-1">2</h4>
+                                <p class="text-muted small mb-0 text-nowrap">
+                                    Laporan Diproses
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="profile-stat">
+                                <h4 class="mb-1">3</h4>
+                                <p class="text-muted small mb-0 text-nowrap">
+                                    Laporan Selesai
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="profile-stat">
+                                <h4 class="mb-1">4</h4>
+                                <p class="text-muted small mb-0 text-nowrap">
+                                    Laporan Ditolak
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+
             </div>
-        </div>
 
-        <div class="col-6">
-            <div class="card profile-stats">
-                <div class="card-body">
-                    <h5 class="card-title">3</h5>
-                    <p class="card-text">Laporan Selesai</p>
+            {{-- RIGHT SIDE --}}
+            <div class="col-lg-6">
+
+                <div class="card profile-menu-card p-3">
+
+                    <div class="list-group list-group-flush">
+
+                        <a href="#"
+                            class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center gap-3">
+                                <i class="fa-solid fa-user"></i>
+                                <span>Pengaturan Akun</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </a>
+
+                        <a href="#"
+                            class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center gap-3">
+                                <i class="fa-solid fa-lock"></i>
+                                <span>Kata sandi</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </a>
+
+                        <a href="#"
+                            class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center gap-3">
+                                <i class="fa-solid fa-question-circle"></i>
+                                <span>Bantuan dan dukungan</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </a>
+
+                    </div>
+
+                    <div class="mt-4">
+                        <button class="btn btn-outline-danger w-100 rounded-pill" data-bs-toggle="modal"
+                            data-bs-target="#logoutModal">
+                            Keluar
+                        </button>
+                    </div>
+
                 </div>
+
             </div>
-        </div>
-    </div>
 
-    <div class="mt-4">
-        <div class="list-group list-group-flush">
-            <a href="#"
-                class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                <div class="d-flex align-items-center gap-3">
-                    <i class="fa-solid fa-user"></i>
-                    <p class="fw-light">Pengaturan Akun</p>
-                </div>
-                <i class="fa-solid fa-chevron-right"></i>
-            </a>
-            <a href="#"
-                class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                <div class="d-flex align-items-center gap-3">
-                    <i class="fa-solid fa-lock"></i>
-                    <p class="fw-light"> Kata sandi</p>
-                </div>
-                <i class="fa-solid fa-chevron-right"></i>
-            </a>
-            <a href="#"
-                class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                <div class="d-flex align-items-center gap-3">
-                    <i class="fa-solid fa-question-circle"></i>
-                    <p class="fw-light">Bantuan dan dukungan</p>
-                </div>
-                <i class="fa-solid fa-chevron-right"></i>
-            </a>
         </div>
 
-        <div class="mt-4">
-            <button class="btn btn-outline-danger w-100 rounded-pill" data-bs-toggle="modal" data-bs-target="#logoutModal">
-                Keluar
-            </button>
-        </div>
     </div>
 
     <!-- Logout Confirmation Modal -->
