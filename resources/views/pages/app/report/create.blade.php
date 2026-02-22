@@ -3,96 +3,87 @@
 @section('title', 'Tambah Laporan')
 
 @section('content')
-    <h3 class="mb-3">Laporkan segera masalahmu di sini!</h3>
 
-    <p class="text-description">Isi form dibawah ini dengan baik dan benar sehingga kami dapat memvalidasi dan
-        menangani
-        laporan anda
-        secepatnya</p>
+    <div class="container py-5">
 
-    <form action="{{ route('report.store') }}" method="POST" class="mt-4" enctype="multipart/form-data">
-        @csrf
-        <input type="hidden" id="lat" name="latitude">
-        <input type="hidden" id="lng" name="longitude">
+        <div class="report-header text-center mb-5">
+            <h2 class="fw-bold mb-3">
+                Laporkan Masalahmu
+            </h2>
 
-        {{-- Judul --}}
-        <div class="mb-3">
-            <label for="title" class="form-label">Judul Laporan</label>
-            <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title"
-                value="{{ old('title') }}">
-            @error('title')
-                <div class="invalid-feedback">
-                    {{ $message }}
+            <p class="text-muted mx-auto">
+                Isi form dengan lengkap agar kami dapat memproses laporan
+                dengan lebih cepat dan akurat.
+            </p>
+        </div>
+
+        <form action="{{ route('report.store') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <input type="hidden" id="lat" name="latitude">
+            <input type="hidden" id="lng" name="longitude">
+
+            <div class="row g-5 align-items-start">
+
+                {{-- LEFT SIDE --}}
+                <div class="col-12 col-lg-7 d-flex flex-column">
+
+                    <div class="mb-4">
+                        <label class="form-label">Judul Laporan</label>
+                        <input type="text" class="form-control" name="title">
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label">Kategori Laporan</label>
+                        <select class="form-select" name="report_category_id">
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">
+                                    {{ $category->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label">Ceritakan Laporan Kamu</label>
+                        <textarea class="form-control" rows="5" name="description"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Alamat Lengkap</label>
+                        <textarea id="address" class="form-control" rows="5" name="address"></textarea>
+                    </div>
+
+                    {{-- BUTTON --}}
+                    <button class="btn btn-success w-100 py-2 rounded-pill mt-2 order-3 order-lg-0">
+                        Laporkan
+                    </button>
+
                 </div>
-            @enderror
-        </div>
 
-        {{-- Kategori --}}
-        <div class="mb-3">
-            <label for="report_category_id" class="form-label">Kategori Laporan</label>
-            <select class="form-select @error('report_category_id') is-invalid @enderror" id="report_category_id"
-                name="report_category_id">
+                {{-- RIGHT SIDE --}}
+                <div class="col-12 col-lg-5">
 
-                @foreach ($categories as $category)
-                    <option value="{{ $category->id }}" @if (old('report_category_id') == $category->id) selected @endif>
-                        {{ $category->name }}
-                    </option>
-                @endforeach
-            </select>
+                    <div class="mb-4">
+                        <label class="form-label">Bukti Laporan</label>
+                        <input type="file" class="d-none" id="image" name="image">
+                        <img id="image-preview" class="img-fluid border shadow-sm" alt="Preview">
+                    </div>
 
-            @error('report_category_id')
-                <div class="invalid-feedback">
-                    {{ $message }}
+                    <div>
+                        <label class="form-label">Lokasi Laporan</label>
+                        <div id="map" class="rounded-4 shadow-sm"></div>
+                    </div>
+
                 </div>
-            @enderror
-        </div>
 
-        {{-- Bukti Gambar Laporan --}}
-        <div class="mb-3">
-            <label for="image" class="form-label">Bukti Laporan</label>
-            <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image"
-                style="display: none">
-            <img alt="image" id="image-preview" class="img-fluid rounded-2 mb-3 border">
-            @error('image')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-            @enderror
-        </div>
+            </div>
 
-        {{-- Deskripsi Laporan --}}
-        <div class="mb-3">
-            <label for="description" class="form-label">Ceritakan Laporan Kamu</label>
-            <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description"
-                rows="5">{{ old('description') }}</textarea>
-            @error('description')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-            @enderror
-        </div>
+            
 
-        {{-- Lokasi Laporan --}}
-        <div class="mb-3">
-            <label for="map" class="form-label">Lokasi Laporan</label>
-            <div id="map"></div>
-        </div>
+        </form>
 
-        {{-- Alamat Lengkap Laporan --}}
-        <div class="mb-3">
-            <label for="address" class="form-label">Alamat Lengkap</label>
-            <textarea class="form-control @error('address') is-invalid @enderror" id="address" name="address" rows="5">{{ old('address') }}</textarea>
-            @error('address')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-            @enderror
-        </div>
+    </div>
 
-        <button class="btn btn-primary w-100 mt-2" type="submit" color="primary">
-            Laporkan
-        </button>
-    </form>
 @endsection
 
 @push('scripts')
@@ -125,7 +116,7 @@
                     });
 
                 // hapus setelah dipakai
-                sessionStorage.removeItem("imageBlob");
+                // sessionStorage.removeItem("imageBlob");
             }
         });
     </script>

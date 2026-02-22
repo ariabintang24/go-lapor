@@ -14,8 +14,9 @@
 
 </head>
 
-<body>
-    <div class="max-w-screen-sm mx-auto bg-white min-vh-100 p-3 ">
+<body class="bg-light">
+    {{-- Responsive Wrapper --}}
+    <div class="no-nav-wrapper">
         @yield('content')
     </div>
 
@@ -32,6 +33,23 @@
 
 
     @stack('scripts')
+
+    <style>
+        .no-nav-wrapper {
+            width: 100%;
+            min-height: 100vh;
+            padding: 30px 20px;
+        }
+
+        /* Desktop */
+        @media (min-width: 992px) {
+            .no-nav-wrapper {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 60px 40px;
+            }
+        }
+    </style>
 </body>
 
 </html>

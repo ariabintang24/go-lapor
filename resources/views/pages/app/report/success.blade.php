@@ -3,17 +3,34 @@
 @section('title', 'Laporan Berhasil Dikirim')
 
 @section('content')
-    <div class="d-flex flex-column justify-content-center align-items-center vh-75">
-        <div id="lottie"></div>
+    <div class="success-wrapper d-flex flex-column justify-content-center align-items-center text-center">
 
-        <h6 class="fw-bold text-center mb-2">Yeay! Laporan kamu berhasil dibuat</h6>
-        <p class="text-center mb-4">Kamu bisa melihat laporan yang dibuat di halaman laporan</p>
+        <div id="lottie" class="mb-4"></div>
 
+        <h5 class="fw-bold mb-2">
+            Yeay! Laporan kamu berhasil dibuat
+        </h5>
 
-        <a href="{{ route('report.myreport', ['status' => 'delivered']) }}" class="btn btn-primary py-2 px-4">
+        <p class="text-muted mb-4 px-3">
+            Kamu bisa melihat laporan yang dibuat di halaman laporan
+        </p>
+
+        <a href="{{ route('report.myreport', ['status' => 'delivered']) }}" class="btn btn-success rounded-pill px-4 py-2">
             Lihat Laporan
         </a>
+
     </div>
+
+    <style>
+        .success-wrapper {
+            min-height: 75vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+    </style>
 @endsection
 
 @push('scripts')
