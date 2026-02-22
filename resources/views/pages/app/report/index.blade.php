@@ -31,7 +31,7 @@
                             <div class="report-image-wrapper">
                                 <img src="{{ asset('storage/' . $report->image) }}" class="report-image">
 
-                                @if ($report->latest_status)
+                                {{-- @if ($report->latest_status)
                                     <span
                                         class="report-badge 
                                 @if ($report->latest_status['label'] == 'Terkirim') badge-blue
@@ -40,7 +40,7 @@
                                 @elseif($report->latest_status['label'] == 'Ditolak') badge-red @endif">
                                         {{ $report->latest_status['label'] }}
                                     </span>
-                                @endif
+                                @endif --}}
                             </div>
 
                             {{-- CONTENT --}}

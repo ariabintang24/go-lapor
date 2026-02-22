@@ -4,6 +4,10 @@
 
 @section('content')
 
+    @php
+        $isOwner = auth()->check() && auth()->user()->resident->id === $report->resident_id;
+    @endphp
+
     <div class="container py-4">
 
         {{-- BACK + TITLE --}}
@@ -63,6 +67,7 @@
                         </div>
 
                         {{-- STATUS --}}
+                        @if ($isOwner)
                         <div class="info-row">
                             <div class="info-label">Status</div>
                             <div class="info-separator">:</div>
@@ -102,6 +107,7 @@
 
                             </div>
                         </div>
+                        @endif
 
                         <div class="info-row">
                             <div class="info-label">Deskripsi</div>

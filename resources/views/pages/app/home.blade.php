@@ -101,11 +101,11 @@
                                 <img src="{{ asset('storage/' . $report->image) }}" class="modern-report-image"
                                     alt="">
 
-                                @if ($report->latest_status)
+                                {{-- @if ($report->latest_status)
                                     <span class="modern-report-badge {{ $report->latest_status['class'] }}">
                                         {{ $report->latest_status['label'] }}
                                     </span>
-                                @endif
+                                @endif --}}
                             </div>
 
                             {{-- CONTENT --}}

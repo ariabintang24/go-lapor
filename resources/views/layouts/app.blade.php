@@ -12,10 +12,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
 
-<body class="pt-5">
-    <div class="container-fluid">
+<body class="d-flex flex-column min-vh-100 pt-5">
+    <div class="container-fluid flex-fill">
 
-        <div class="container py-4">
+        <div class="container py-4 mb-5">
             @yield('content')
         </div>
 
