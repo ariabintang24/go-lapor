@@ -49,7 +49,9 @@ class ReportController extends Controller
 
     public function show($code)
     {
-        $report = $this->reportRepository->getReportByCode($code);
+        $report = $this->reportRepository
+            ->getReportByCode($code)
+            ->load('resident.user');
 
         return view('pages.app.report.show', compact('report'));
     }

@@ -43,6 +43,14 @@
                         </div>
 
                         <div class="info-row">
+                            <div class="info-label">Dibuat oleh</div>
+                            <div class="info-separator">:</div>
+                            <div class="info-value">
+                                {{ $report->resident?->user?->name ?? '-' }}
+                            </div>
+                        </div>
+
+                        <div class="info-row">
                             <div class="info-label">Tanggal</div>
                             <div class="info-separator">:</div>
                             <div class="info-value">
@@ -68,45 +76,45 @@
 
                         {{-- STATUS --}}
                         @if ($isOwner)
-                        <div class="info-row">
-                            <div class="info-label">Status</div>
-                            <div class="info-separator">:</div>
-                            <div class="info-value">
+                            <div class="info-row">
+                                <div class="info-label">Status</div>
+                                <div class="info-separator">:</div>
+                                <div class="info-value">
 
-                                @php
-                                    $lastStatus = $report->reportStatuses->last()?->status;
-                                @endphp
+                                    @php
+                                        $lastStatus = $report->reportStatuses->last()?->status;
+                                    @endphp
 
-                                @if ($lastStatus)
-                                    @switch($lastStatus)
-                                        @case('delivered')
-                                            <div class="badge-status badge-blue">
-                                                <span>Terkirim</span>
-                                            </div>
-                                        @break
+                                    @if ($lastStatus)
+                                        @switch($lastStatus)
+                                            @case('delivered')
+                                                <div class="badge-status badge-blue">
+                                                    <span>Terkirim</span>
+                                                </div>
+                                            @break
 
-                                        @case('in_process')
-                                            <div class="badge-status badge-yellow">
-                                                <span>Diproses</span>
-                                            </div>
-                                        @break
+                                            @case('in_process')
+                                                <div class="badge-status badge-yellow">
+                                                    <span>Diproses</span>
+                                                </div>
+                                            @break
 
-                                        @case('completed')
-                                            <div class="badge-status badge-green">
-                                                <span>Selesai</span>
-                                            </div>
-                                        @break
+                                            @case('completed')
+                                                <div class="badge-status badge-green">
+                                                    <span>Selesai</span>
+                                                </div>
+                                            @break
 
-                                        @case('rejected')
-                                            <div class="badge-status badge-red">
-                                                <span>Ditolak</span>
-                                            </div>
-                                        @break
-                                    @endswitch
-                                @endif
+                                            @case('rejected')
+                                                <div class="badge-status badge-red">
+                                                    <span>Ditolak</span>
+                                                </div>
+                                            @break
+                                        @endswitch
+                                    @endif
 
+                                </div>
                             </div>
-                        </div>
                         @endif
 
                         <div class="info-row">
