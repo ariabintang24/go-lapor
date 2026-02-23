@@ -10,12 +10,9 @@ use Illuminate\Support\Facades\Auth;
 
 class ReportRepository implements ReportRepositoryInterface
 {
-    public function getAllReports()
+    public function getAllReports($sort = 'newest')
     {
-        return Report::with('reportStatuses')
-            ->latest()
-            ->paginate(6)
-            ->withQueryString();
+        return $this->getReports(null, $sort);
     }
 
     public function getLatestReports()
@@ -26,24 +23,35 @@ class ReportRepository implements ReportRepositoryInterface
             ->get();
     }
 
+    public function getReports($category = null, $sort = 'newest')
+    {
+        $query = Report::with('reportStatuses');
+
+        // FILTER CATEGORY
+        if ($category) {
+            $query->whereHas('reportCategory', function ($q) use ($category) {
+                $q->where('name', $category);
+            });
+        }
+
+        // FILTER SORT
+        if ($sort === 'oldest') {
+            $query->oldest();
+        } else {
+            $query->latest();
+        }
+
+        return $query->paginate(6)->withQueryString();
+    }
+
     public function getReportByCode(string $code)
     {
         return Report::where('code', $code)->first();
     }
 
-    public function getReportsByCategory(string $category)
+    public function getReportsByCategory(string $category, $sort = 'newest')
     {
-        $categoryModel = ReportCategory::where('name', $category)->first();
-
-        if (!$categoryModel) {
-            return Report::whereRaw('1 = 0')->paginate(6);
-        }
-
-        return Report::with('reportStatuses')
-            ->where('report_category_id', $categoryModel->id)
-            ->latest()
-            ->paginate(6)
-            ->withQueryString();
+        return $this->getReports($category, $sort);
     }
 
     public function getReportsByResidentId(string $status)

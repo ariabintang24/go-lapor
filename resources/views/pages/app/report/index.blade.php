@@ -4,14 +4,26 @@
 
 @section('content')
     <div class="py-3" id="reports">
-        <div class="d-flex justify-content-between align-items-center">
-            <p class="text-muted">{{ $reports->total() }} List Pengaduan</p>
-
-            <button class="btn btn-filter" type="button">
-                <i class="fa-solid fa-filter me-2"></i>
-                Filter
+        <div class="dropdown">
+            <button class="btn btn-filter dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                {{ request('sort', 'newest') === 'oldest' ? 'Terlama' : 'Terbaru' }}
             </button>
 
+            <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                    <a class="dropdown-item {{ request('sort', 'newest') === 'newest' ? 'active' : '' }}"
+                        href="{{ request()->fullUrlWithQuery(['sort' => 'newest']) }}">
+                        Terbaru
+                    </a>
+                </li>
+
+                <li>
+                    <a class="dropdown-item {{ request('sort') === 'oldest' ? 'active' : '' }}"
+                        href="{{ request()->fullUrlWithQuery(['sort' => 'oldest']) }}">
+                        Terlama
+                    </a>
+                </li>
+            </ul>
         </div>
 
         @if (request()->category)

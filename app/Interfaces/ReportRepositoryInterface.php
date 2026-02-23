@@ -4,13 +4,15 @@ namespace App\Interfaces;
 
 interface ReportRepositoryInterface
 {
-    public function getAllReports();
+    public function getAllReports($sort = 'newest');
 
     public function getLatestReports();
 
     public function getReportByCode(string $code);
 
-    public function getReportsByCategory(string $category);
+    public function getReportsByCategory(string $category, $sort = 'newest');
+
+    public function getReports($category = null, $sort = 'newest');
 
     public function getReportsByResidentId(string $status);
 
