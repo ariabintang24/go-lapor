@@ -81,7 +81,7 @@
     <div class="mb-5" id="reports">
 
         <div class="d-flex justify-content-between align-items-center">
-            <h6 class="fw-semibold">Pengaduan Terbaru</h6>
+            <h6 class="fw-bold">Pengaduan Terbaru</h6>
             <a href="{{ route('report.index') }}" class="text-primary text-decoration-none small">
                 Lihat semua
             </a>
@@ -161,12 +161,11 @@
 
                         <div class="text-center px-3">
                             <h6 class="fw-semibold step-title">
-                                Pilih Kategori
+                                Daftar & Masuk
                             </h6>
 
                             <p class="text-muted step-desc mb-0">
-                                Lengkapi detail laporan agar tim dapat
-                                menindaklanjuti dengan cepat.
+                                Buat akun dan masuk untuk mulai mengirim laporan serta memantau perkembangannya.
                             </p>
                         </div>
 
@@ -184,12 +183,11 @@
 
                         <div class="text-center px-3">
                             <h6 class="fw-semibold step-title">
-                                Isi Detail
+                                Buat Laporan
                             </h6>
 
                             <p class="text-muted step-desc mb-0">
-                                Lengkapi detail laporan agar tim dapat
-                                menindaklanjuti dengan cepat.
+                                Isi detail laporan dengan data yang benar dan jelas agar dapat segera ditindaklanjuti.
                             </p>
                         </div>
 
@@ -211,7 +209,7 @@
                             </h6>
 
                             <p class="text-muted step-desc mb-0">
-                                Pantau progres laporan secara real-time hingga selesai
+                                Pantau perkembangan laporanmu secara berkala hingga selesai ditangani.
                             </p>
                         </div>
                     </div>
@@ -279,6 +277,6 @@
     </div>
 
     {{-- ================= CENTERED WHITE FOOTER ================= --}}
-    
+
 
 @endsection

@@ -607,8 +607,6 @@ textarea.form-control {
     background: #f8f9fa;
 }
 
-
-
 /* Tambahan khusus mobile */
 @media (max-width: 768px) {
     .footer-section .container {
@@ -1029,6 +1027,12 @@ textarea.form-control {
     position: relative;
 }
 
+.modern-timeline a {
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 9999;
+}
+
 .modern-timeline li {
     position: relative;
     padding-left: 30px;
@@ -1043,6 +1047,7 @@ textarea.form-control {
     position: absolute;
     left: 0;
     top: 6px;
+    pointer-events: none;
 }
 
 .modern-timeline::before {
@@ -1053,6 +1058,7 @@ textarea.form-control {
     width: 2px;
     height: 100%;
     background: #e5e7eb;
+    pointer-events: none;
 }
 
 .rounded-full {

@@ -20,7 +20,8 @@
 
         {{-- HERO IMAGE --}}
         <div class="report-hero mb-4">
-            <img src="{{ asset('storage/' . $report->image) }}" class="img-fluid w-100">
+            <img src="{{ asset('storage/' . $report->image) }}" class="img-fluid w-100 preview-lightbox"
+                data-src="{{ asset('storage/' . $report->image) }}" style="cursor:pointer;">
         </div>
 
         {{-- TITLE --}}
@@ -153,7 +154,9 @@
 
                                         @if ($status->image)
                                             <img src="{{ asset('storage/' . $status->image) }}"
-                                                class="img-fluid rounded-3 mt-2">
+                                                class="img-fluid w-100 preview-lightbox"
+                                                data-src="{{ asset('storage/' . $status->image) }}"
+                                                style="cursor:pointer;">
                                         @endif
 
                                     </div>

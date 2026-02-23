@@ -89,8 +89,7 @@
                                 {{-- jika ada tampilkan image, kalau tidak - --}}
                                 <td>
                                     @if ($status->image)
-                                        <img src="{{ asset('storage/' . $report->image) }}" width="100"
-                                            alt="{{ $report->name }}">
+                                        <img src="{{ asset('storage/' . $status->image) }}" width="100">
                                     @else
                                         -
                                     @endif

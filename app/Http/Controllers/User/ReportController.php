@@ -51,7 +51,7 @@ class ReportController extends Controller
     {
         $report = $this->reportRepository
             ->getReportByCode($code)
-            ->load('resident.user');
+            ->load('resident.user', 'reportStatuses');
 
         return view('pages.app.report.show', compact('report'));
     }

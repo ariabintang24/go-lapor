@@ -72,24 +72,23 @@
                 <div class="card profile-menu-card p-3">
 
                     <div class="list-group list-group-flush">
+                        <a href="{{ route('report.myreport', ['status' => 'delivered']) }}"
+                            class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center gap-3">
+                                <i class="fa-solid fa-book"></i>
+                                <span>Laporanmu</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </a>
 
-                        <a href="#"
+                        {{-- <a href="#"
                             class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
                             <div class="d-flex align-items-center gap-3">
                                 <i class="fa-solid fa-user"></i>
                                 <span>Pengaturan Akun</span>
                             </div>
                             <i class="fa-solid fa-chevron-right"></i>
-                        </a>
-
-                        <a href="#"
-                            class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                            <div class="d-flex align-items-center gap-3">
-                                <i class="fa-solid fa-lock"></i>
-                                <span>Kata sandi</span>
-                            </div>
-                            <i class="fa-solid fa-chevron-right"></i>
-                        </a>
+                        </a> --}}
 
                         <a href="#"
                             class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">

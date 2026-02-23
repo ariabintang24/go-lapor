@@ -46,7 +46,9 @@ class ReportRepository implements ReportRepositoryInterface
 
     public function getReportByCode(string $code)
     {
-        return Report::where('code', $code)->first();
+        return Report::with('reportStatuses')
+            ->where('code', $code)
+            ->first();
     }
 
     public function getReportsByCategory(string $category, $sort = 'newest')
