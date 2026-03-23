@@ -49,7 +49,7 @@ The platform is designed to improve communication between the public and authori
 
 ### 📊 Report Detail
 
-<img src="./previews/detail.png" width="300"/>
+<img src="./previews/detail_report.png" width="300"/>
 
 ---
 
